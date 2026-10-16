@@ -927,7 +927,7 @@
                     </div>
                     <div>
                         <h4 class="font-black text-sm">Asistente Volutiva</h4>
-                        <span class="block text-[10px] text-gray-300 flex items-center gap-1 font-bold tracking-widest uppercase"><span class="w-2 h-2 rounded-full bg-green-400 inline-block animate-pulse"></span> Concierge B2B</span>
+                        <span class="block text-[10px] text-gray-300 flex items-center gap-1 font-bold tracking-widest uppercase"><span class="w-2 h-2 rounded-full bg-green-400 inline-block animate-pulse"></span> Asesor virtual</span>
                     </div>
                 </div>
                 <button onclick="toggleChat()" aria-label="Cerrar chat" class="text-gray-400 hover:text-white text-xl p-1">
@@ -935,7 +935,7 @@
                 </button>
             </div>
 
-            <div id="chat-messages" class="p-5 h-64 sm:h-72 overflow-y-auto space-y-4 bg-gray-50 text-sm shrink-0 sm:shrink">
+            <div id="chat-messages" role="log" aria-live="polite" aria-relevant="additions" class="p-5 h-64 sm:h-72 overflow-y-auto space-y-4 bg-gray-50 text-sm shrink-0 sm:shrink">
                 <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-200 max-w-[90%] leading-relaxed space-y-2 rounded-tl-none">
                     <p>¡Hola! 🌿 Bienvenido(a) a <strong>Volutiva Chile</strong>.</p>
                     <p>Hemos transformado campañas para marcas como LATAM Airlines. ¿En qué te podemos ayudar hoy con tus residuos corporativos?</p>
@@ -948,12 +948,13 @@
                 <button onclick="sendQuickReply('Ver grandes logros y casos de éxito')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold transition-colors shrink-0">⭐ Caso LATAM</button>
                 <button onclick="sendQuickReply('Ver productos y catálogo')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold transition-colors shrink-0">🎒 Catálogo</button>
                 <button onclick="sendQuickReply('Proceso de reciclaje y lonas')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold transition-colors shrink-0">♻️ Proceso</button>
-                <button onclick="sendQuickReply('calcular impacto')" class="bg-volutiva-accent/10 hover:bg-volutiva-accent hover:text-white text-volutiva-accent px-4 py-2 rounded-full font-black transition-colors shrink-0 border border-volutiva-accent/30">📊 Calculadora</button>
+                <button onclick="sendQuickReply('¿Qué impacto tiene un pedido?')" class="bg-volutiva-accent/10 hover:bg-volutiva-accent hover:text-white text-volutiva-accent px-4 py-2 rounded-full font-black transition-colors shrink-0 border border-volutiva-accent/30">📊 Impacto</button>
+                <button onclick="sendQuickReply('¿Qué ODS se relacionan con los pedidos?')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold transition-colors shrink-0">🌎 ODS</button>
             </div>
 
             <div class="p-4 bg-white border-t border-gray-100 flex gap-3 shrink-0">
-                <input type="text" id="chat-input" placeholder="Escribe tu consulta..." class="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-volutiva-accent focus:ring-1 focus:ring-volutiva-accent text-sm font-medium bg-gray-50" onkeypress="handleChatKey(event)">
-                <button onclick="sendUserMessage()" aria-label="Enviar mensaje al chat" class="bg-volutiva-accent hover:bg-volutiva-charcoal text-white px-4 py-3 rounded-xl text-sm font-black transition-colors shadow-md flex items-center justify-center">
+                <input type="text" id="chat-input" aria-label="Escribe tu consulta" placeholder="Escribe tu consulta..." class="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-volutiva-accent focus:ring-1 focus:ring-volutiva-accent text-sm font-medium bg-gray-50" onkeydown="handleChatKey(event)">
+                <button type="button" onclick="sendUserMessage()" aria-label="Enviar mensaje al chat" class="bg-volutiva-accent hover:bg-volutiva-charcoal text-white px-4 py-3 rounded-xl text-sm font-black transition-colors shadow-md flex items-center justify-center">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
@@ -1053,20 +1054,25 @@
         function appendMessage(sender, text) {
             const messagesContainer = document.getElementById('chat-messages');
             const messageDiv = document.createElement('div');
+            const bubble = document.createElement('div');
             
             if (sender === 'user') {
                 messageDiv.className = 'flex justify-end';
-                messageDiv.innerHTML = `<div class="bg-volutiva-charcoal text-white p-4 rounded-2xl rounded-tr-none max-w-[85%] text-sm shadow-sm">${text}</div>`;
+                bubble.className = 'bg-volutiva-charcoal text-white p-4 rounded-2xl rounded-tr-none max-w-[85%] text-sm shadow-sm whitespace-pre-wrap break-words';
+                bubble.textContent = text;
             } else {
                 messageDiv.className = 'flex justify-start';
-                messageDiv.innerHTML = `<div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-gray-200 max-w-[90%] text-sm leading-relaxed space-y-2">${text}</div>`;
+                bubble.className = 'bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-gray-200 max-w-[90%] text-sm leading-relaxed space-y-2 break-words';
+                bubble.innerHTML = text;
             }
             
+            messageDiv.appendChild(bubble);
             messagesContainer.appendChild(messageDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
         function sendQuickReply(text) {
+            document.getElementById('chat-input').value = '';
             appendMessage('user', text);
             processBotResponse(text);
         }
@@ -1083,39 +1089,33 @@
 
         function handleChatKey(e) {
             if (e.key === 'Enter') {
+                e.preventDefault();
                 sendUserMessage();
             }
         }
 
         const detailedKnowledgeBase = [
             {
-                keywords: ['calcular', 'impacto', 'calculadora', 'simular', 'cotización exprés'],
-                response: `📊 <strong>Calculadora Exprés de Impacto Volutiva:</strong><br>
-                ¿Tienes material publicitario acumulado?<br>
-                • <strong>10 m² de Lona</strong> = Aprox. 8 a 10 Porta Notebooks o Bolsos.<br>
-                • <strong>Beneficio ESG:</strong> 100% libre de vertedero + trazabilidad fotográfica.<br>
-                <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">¡Cotiza tu proyecto a medida ahora →</a>`
+                keywords: ['hola', 'buenos dias', 'buenas tardes', 'buenas noches'],
+                response: `¡Hola! 🌿 Puedo orientarte sobre nuestros productos, el proceso de transformación, los ODS relacionados o cómo cotizar. ¿Qué te gustaría saber?`
             },
             {
-                keywords: ['logro', 'latam', 'caso', 'exito', 'éxito', 'marcas', 'confianza', 'clientes', 'global vía pública', 'aliados', 'empresas aliadas'],
+                keywords: ['caso latam', 'latam', 'caso de exito', 'casos de exito', 'logros', 'aliados', 'empresas aliadas', 'global via publica'],
                 response: `⭐ <strong>Empresas y Aliados Estratégicos:</strong><br>
-                Volutiva cuenta con el respaldo y confianza de importantes organizaciones:<br>
-                • <strong>LATAM Airlines:</strong> Partner en nuestro caso de éxito principal (+150 porta notebooks elaborados).<br>
-                • <strong>Global Vía Pública:</strong> Socio logístico en recuperación de lonas.<br>
-                • <strong>Fundación Gestionar Esperanzas:</strong> Impulsó el programa “Una Vuelta +”, al alero del cual surge Volutiva.<br>
-                • <strong>Universidad Autónoma de Chile:</strong> Vinculación académica e innovación.<br>
+                En un proyecto con LATAM Airlines y Global Vía Pública se recuperó un letrero publicitario y se transformó en más de 150 porta notebooks.<br>
+                Fundación Gestionar Esperanzas impulsó el programa “Una Vuelta +”, al alero del cual surge Volutiva.<br>
                 <a href="#aliados" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">Ver escaparate de marcas y aliados →</a>`
             },
             {
-                keywords: ['qué es', 'que es', 'volutiva', 'quiénes son', 'quienes son', 'emprendimiento', 'historia'],
+                keywords: ['que hace volutiva', 'que es volutiva', 'quienes son', 'historia de volutiva', 'una vuelta', 'fundacion gestionar esperanzas', 'emprendimiento'],
                 response: `🌿 <strong>¿Qué es Volutiva Chile?</strong><br>
-                Somos un emprendimiento chileno que surge al alero del programa <strong>“Una Vuelta +”</strong> de Fundación Gestionar Esperanzas. Desde Pudahuel convertimos material publicitario en desuso en productos corporativos de alta calidad.<br>
+                Volutiva surge al alero del programa <strong>“Una Vuelta +”</strong> de Fundación Gestionar Esperanzas. Desde Pudahuel transformamos lonas y textiles publicitarios en desuso en productos corporativos útiles y duraderos.<br>
                 <span class="text-[11px] text-gray-500 block mt-1 font-bold">💡 Cofundadoras: Natalia Albornoz y Alida Guillén.</span>`
             },
             {
-                keywords: ['ods', 'objetivos de desarrollo sostenible', 'objetivos de desarrollo', 'sostenible', 'sostenibilidad'],
+                keywords: ['ods', 'ods 5', 'ods 8', 'ods 9', 'ods 12', 'ods 13', 'ods 17', 'objetivos de desarrollo sostenible', 'desarrollo sostenible', 'objetivos sostenibles', 'impacto ods', 'impacto de los ods', 'ods y sostenibilidad'],
                 response: `🌎 <strong>ODS vinculados a los pedidos:</strong><br>
-                Según los materiales y el alcance de cada proyecto, los pedidos pueden contribuir a:<br>
+                Según el material y alcance del proyecto, un pedido puede contribuir a:<br>
                 • <strong>ODS 5:</strong> Igualdad de género.<br>
                 • <strong>ODS 8:</strong> Trabajo decente y crecimiento económico.<br>
                 • <strong>ODS 9:</strong> Industria, innovación e infraestructura.<br>
@@ -1126,67 +1126,92 @@
                 <a href="#impacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">Ver cómo se relacionan con nuestro impacto →</a>`
             },
             {
-                keywords: ['producto', 'catalogo', 'catálogo', 'mochila', 'bolso', 'cartera', 'notebook', 'funda', 'accesorios'],
+                keywords: ['producto', 'productos', 'catalogo', 'mochila', 'mochilas', 'bolso', 'bolsos', 'cartera', 'carteras', 'notebook', 'notebooks', 'funda', 'fundas', 'estuche', 'estuches', 'accesorios', 'porta notebook'],
                 response: `🎒 <strong>Nuestro Catálogo Sustentable:</strong><br>
-                • <strong>Mochilas:</strong> Resistentes, urbanas y ergonómicas.<br>
-                • <strong>Bolsos:</strong> Gran capacidad, impermeables y lavables.<br>
-                • <strong>Carteras:</strong> Diseños únicos según la gráfica de origen.<br>
-                • <strong>Porta Notebooks:</strong> Acolchados y seguros para ejecutivos.<br>
+                Encontrarás mochilas, bolsos, tote bags, porta notebooks, estuches y accesorios confeccionados con materiales recuperados. Los diseños y cantidades se pueden adaptar al material disponible.<br>
                 <a href="#catalogo" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-1">Ver galería de productos →</a>`
             },
             {
-                keywords: ['cotizar', 'empresa', 'corporativo', 'precio', 'minimo', 'b2b', 'rse', 'esg', 'marketing', 'regalo'],
-                response: `🏢 <strong>Soluciones Corporativas B2B:</strong><br>
-                Convertimos los residuos de tu marca en activos con propósito (Regalos corporativos y merchandising ESG).<br>
-                <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-1">Ir al formulario de contacto →</a>`
+                keywords: ['cotizar', 'cotizacion', 'precio', 'valor', 'presupuesto', 'pedido', 'comprar', 'empresa', 'corporativo', 'b2b', 'regalo corporativo', 'cuanto cuesta'],
+                response: `🏢 <strong>Cotizaciones para empresas:</strong><br>
+                Para orientarte, cuéntanos qué material quieres recuperar, una cantidad o superficie aproximada, qué productos te interesan y para cuándo los necesitas. El valor y las cantidades se revisan según cada proyecto.<br>
+                <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">Completar el formulario de contacto →</a><br>
+                <a href="https://wa.me/56975824178?text=Hola%2C%20quiero%20cotizar%20un%20proyecto%20con%20Volutiva." target="_blank" rel="noopener noreferrer" class="text-volutiva-accent font-bold underline">Escribir por WhatsApp →</a>`
             },
             {
-                keywords: ['proceso', 'como funciona', 'cmo funciona', 'reciclaje', 'lona', 'recuperar', 'residuo', 'campaña', 'etapas'],
-                response: `♻️ <strong>Proceso Circular Trazable:</strong><br>
-                1️⃣ <strong>Origen:</strong> Retiramos lonas en desuso.<br>
-                2️⃣ <strong>Limpieza:</strong> Higienización industrial.<br>
-                3️⃣ <strong>Diseño:</strong> Cortes a medida.<br>
-                4️⃣ <strong>Confección:</strong> Costura experta local.<br>
-                5️⃣ <strong>Resultado:</strong> Producto corporativo terminado.<br>
+                keywords: ['proceso', 'como funciona', 'reciclar', 'reciclaje', 'lona', 'lonas', 'textil', 'textiles', 'material', 'materiales', 'recuperar', 'residuo', 'residuos', 'campana', 'etapas'],
+                response: `♻️ <strong>¿Cómo funciona la transformación?</strong><br>
+                1️⃣ Revisamos el material disponible y las ideas del proyecto.<br>
+                2️⃣ El material se limpia, selecciona y prepara para el diseño.<br>
+                3️⃣ Se corta y confecciona localmente para crear los productos acordados.<br>
+                Las posibilidades y cantidades dependen del estado y tipo de material.<br>
                 <a href="#proceso" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-1">Ver esquema completo →</a>`
             },
             {
-                keywords: ['ubicacion', 'ubicación', 'direccion', 'dirección', 'donde', 'dónde', 'pudahuel', 'santiago', 'mapa', 'llegar'],
-                response: `📍 <strong>Nuestra Casa Matriz:</strong><br>
-                Operamos desde <strong>Pasaje Isla Hermite 8740, Pudahuel, Santiago, Chile</strong>.<br>
-                <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-1">Ver ubicación en Google Maps →</a>`
+                keywords: ['ubicacion', 'direccion', 'donde estan', 'donde queda', 'pudahuel', 'santiago', 'mapa', 'llegar'],
+                response: `📍 <strong>Ubicación:</strong><br>
+                Volutiva trabaja desde Pudahuel, Santiago. Para coordinar una visita o consultar por retiro de material, escríbenos antes por <a href="https://wa.me/56975824178?text=Hola%2C%20quisiera%20consultar%20por%20la%20ubicacion%20de%20Volutiva." target="_blank" rel="noopener noreferrer" class="text-volutiva-accent font-bold underline">WhatsApp</a>.<br>
+                <a href="https://maps.google.com/?q=Pasaje+Isla+Hermite+8740,+Pudahuel,+Santiago,+Chile" target="_blank" rel="noopener noreferrer" class="text-volutiva-accent font-bold underline block mt-1">Ver mapa de referencia →</a>`
+            },
+            {
+                keywords: ['calcular impacto', 'calcular mi impacto', 'calculadora', 'simular impacto', 'estimacion de impacto'],
+                response: `📊 <strong>Estimación de impacto</strong><br>
+                No calculamos una cifra fiable sin revisar cada proyecto. Para preparar una estimación, necesitamos conocer el tipo y la cantidad de material disponible, su estado y los productos que te interesan.<br>
+                <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">Compartir los datos de tu proyecto →</a>`
+            },
+            {
+                keywords: ['impacto', 'impacto ambiental', 'impacto social', 'sostenibilidad', 'esg', 'rse', 'huella'],
+                response: `🌱 <strong>Impacto de un proyecto:</strong><br>
+                Recuperar material publicitario permite darle una nueva vida en productos útiles y apoyar la producción local. El impacto específico —por ejemplo, material aprovechado y productos confeccionados— se debe estimar con los datos de cada pedido; no ofrecemos una cifra automática sin revisar el material.<br>
+                <a href="#impacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">Conocer los impactos y ODS relacionados →</a>`
+            },
+            {
+                keywords: ['contacto', 'correo', 'email', 'telefono', 'whatsapp', 'hablar con alguien', 'asesoria'],
+                response: `💬 <strong>Hablemos de tu proyecto</strong><br>
+                Puedes contarnos qué material tienes y qué necesitas producir en el <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline">formulario de contacto</a> o escribirnos por <a href="https://wa.me/56975824178?text=Hola%2C%20quiero%20hacer%20una%20consulta%20a%20Volutiva." target="_blank" rel="noopener noreferrer" class="text-volutiva-accent font-bold underline">WhatsApp</a>.`
+            },
+            {
+                keywords: ['ayuda', 'opciones', 'que puedo preguntar'],
+                response: `Puedo ayudarte con:<br>• Productos y catálogo<br>• Cómo funciona la transformación<br>• El origen de Volutiva y sus aliados<br>• ODS e impacto de los pedidos<br>• Cotizaciones y contacto<br>Escribe una consulta o elige una opción del menú.`
             }
         ];
 
+        function normalizeChatText(text) {
+            return text
+                .toLocaleLowerCase('es')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^a-z0-9]+/g, ' ')
+                .trim()
+                .replace(/\s+/g, ' ');
+        }
+
         function findBestDetailedResponse(userText) {
-            const lower = userText.toLowerCase();
-            for (let item of detailedKnowledgeBase) {
-                for (let kw of item.keywords) {
-                    if (lower.includes(kw)) {
-                        return item.response;
+            const normalizedText = ` ${normalizeChatText(userText)} `;
+            let bestMatch = null;
+            let bestScore = 0;
+
+            for (const item of detailedKnowledgeBase) {
+                for (const keyword of item.keywords) {
+                    const normalizedKeyword = normalizeChatText(keyword);
+                    if (normalizedText.includes(` ${normalizedKeyword} `)) {
+                        const wordCount = normalizedKeyword.split(' ').length;
+                        const score = wordCount * 100 + normalizedKeyword.length;
+                        if (score > bestScore) {
+                            bestMatch = item;
+                            bestScore = score;
+                        }
                     }
                 }
             }
-            return `¡Gracias por tu mensaje! 🌿 Para brindarte una respuesta personalizada o asesorarte, te invitamos a dejarnos un correo a través de nuestro <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline">formulario de contacto</a>.`;
+
+            return bestMatch
+                ? bestMatch.response
+                : `No encontré una respuesta exacta para eso. Puedo ayudarte con productos, proceso, ODS, impacto o cotizaciones. Si prefieres, cuéntanos tu consulta por el <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline">formulario de contacto</a> o por <a href="https://wa.me/56975824178?text=Hola%2C%20tengo%20una%20consulta%20para%20Volutiva." target="_blank" rel="noopener noreferrer" class="text-volutiva-accent font-bold underline">WhatsApp</a>.`;
         }
 
         function processBotResponse(userText) {
-            const messagesContainer = document.getElementById('chat-messages');
-            
-            const typingDiv = document.createElement('div');
-            typingDiv.className = 'flex justify-start';
-            typingDiv.id = 'bot-typing-indicator';
-            typingDiv.innerHTML = `<div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-gray-200 text-gray-400 italic text-xs flex items-center gap-2"><span class="w-1.5 h-1.5 bg-volutiva-accent rounded-full animate-bounce"></span><span class="w-1.5 h-1.5 bg-volutiva-accent rounded-full animate-bounce [animation-delay:0.2s]"></span><span class="w-1.5 h-1.5 bg-volutiva-accent rounded-full animate-bounce [animation-delay:0.4s]"></span></div>`;
-            messagesContainer.appendChild(typingDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-            setTimeout(() => {
-                const indicator = document.getElementById('bot-typing-indicator');
-                if (indicator) indicator.remove();
-
-                const reply = findBestDetailedResponse(userText);
-                appendMessage('bot', reply);
-            }, 1000);
+            appendMessage('bot', findBestDetailedResponse(userText));
         }
 
         // Manejador del formulario
