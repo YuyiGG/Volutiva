@@ -948,7 +948,7 @@
                 <button onclick="sendQuickReply('Ver grandes logros y casos de éxito')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold transition-colors shrink-0">⭐ Caso LATAM</button>
                 <button onclick="sendQuickReply('Ver productos y catálogo')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold transition-colors shrink-0">🎒 Catálogo</button>
                 <button onclick="sendQuickReply('Proceso de reciclaje y lonas')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold transition-colors shrink-0">♻️ Proceso</button>
-                <button onclick="sendQuickReply('¿Qué impacto tiene un pedido?')" class="bg-volutiva-accent/10 hover:bg-volutiva-accent hover:text-white text-volutiva-accent px-4 py-2 rounded-full font-black transition-colors shrink-0 border border-volutiva-accent/30">📊 Impacto</button>
+                <button onclick="sendQuickReply('calcular impacto')" class="bg-volutiva-accent/10 hover:bg-volutiva-accent hover:text-white text-volutiva-accent px-4 py-2 rounded-full font-black transition-colors shrink-0 border border-volutiva-accent/30">📊 Calcula impacto</button>
                 <button onclick="sendQuickReply('¿Qué ODS se relacionan con los pedidos?')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold transition-colors shrink-0">🌎 ODS</button>
             </div>
 
@@ -1051,6 +1051,10 @@
             chatWindow.classList.toggle('hidden');
         }
 
+        function closeChat() {
+            document.getElementById('chat-window').classList.add('hidden');
+        }
+
         function appendMessage(sender, text) {
             const messagesContainer = document.getElementById('chat-messages');
             const messageDiv = document.createElement('div');
@@ -1104,7 +1108,7 @@
                 response: `⭐ <strong>Empresas y Aliados Estratégicos:</strong><br>
                 En un proyecto con LATAM Airlines y Global Vía Pública se recuperó un letrero publicitario y se transformó en más de 150 porta notebooks.<br>
                 Fundación Gestionar Esperanzas impulsó el programa “Una Vuelta +”, al alero del cual surge Volutiva.<br>
-                <a href="#aliados" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">Ver escaparate de marcas y aliados →</a>`
+                <a href="#aliados" onclick="closeChat()" class="text-volutiva-accent font-bold underline block mt-2">Ver escaparate de marcas y aliados →</a>`
             },
             {
                 keywords: ['que hace volutiva', 'que es volutiva', 'quienes son', 'historia de volutiva', 'una vuelta', 'fundacion gestionar esperanzas', 'emprendimiento'],
@@ -1123,20 +1127,20 @@
                 • <strong>ODS 13:</strong> Acción por el clima.<br>
                 • <strong>ODS 17:</strong> Alianzas para lograr los objetivos.<br>
                 La contribución concreta depende de cada pedido y no equivale a una certificación.<br>
-                <a href="#impacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">Ver cómo se relacionan con nuestro impacto →</a>`
+                <a href="#impacto" onclick="closeChat()" class="text-volutiva-accent font-bold underline block mt-2">Ver cómo se relacionan con nuestro impacto →</a>`
             },
             {
                 keywords: ['producto', 'productos', 'catalogo', 'mochila', 'mochilas', 'bolso', 'bolsos', 'cartera', 'carteras', 'notebook', 'notebooks', 'funda', 'fundas', 'estuche', 'estuches', 'accesorios', 'porta notebook'],
                 response: `🎒 <strong>Nuestro Catálogo Sustentable:</strong><br>
                 Encontrarás mochilas, bolsos, tote bags, porta notebooks, estuches y accesorios confeccionados con materiales recuperados. Los diseños y cantidades se pueden adaptar al material disponible.<br>
-                <a href="#catalogo" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-1">Ver galería de productos →</a>`
+                <a href="#catalogo" onclick="closeChat()" class="text-volutiva-accent font-bold underline block mt-1">Ver galería de productos →</a>`
             },
             {
                 priority: 1,
                 keywords: ['cotizar', 'cotizacion', 'precio', 'valor', 'presupuesto', 'pedido', 'comprar', 'empresa', 'corporativo', 'b2b', 'regalo corporativo', 'cuanto cuesta'],
                 response: `🏢 <strong>Cotizaciones para empresas:</strong><br>
                 Para orientarte, cuéntanos qué material quieres recuperar, una cantidad o superficie aproximada, qué productos te interesan y para cuándo los necesitas. El valor y las cantidades se revisan según cada proyecto.<br>
-                <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">Completar el formulario de contacto →</a><br>
+                <a href="#contacto" onclick="closeChat()" class="text-volutiva-accent font-bold underline block mt-2">Completar el formulario de contacto →</a><br>
                 <a href="https://wa.me/56975824178?text=Hola%2C%20quiero%20cotizar%20un%20proyecto%20con%20Volutiva." target="_blank" rel="noopener noreferrer" class="text-volutiva-accent font-bold underline">Escribir por WhatsApp →</a>`
             },
             {
@@ -1146,7 +1150,7 @@
                 2️⃣ El material se limpia, selecciona y prepara para el diseño.<br>
                 3️⃣ Se corta y confecciona localmente para crear los productos acordados.<br>
                 Las posibilidades y cantidades dependen del estado y tipo de material.<br>
-                <a href="#proceso" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-1">Ver esquema completo →</a>`
+                <a href="#proceso" onclick="closeChat()" class="text-volutiva-accent font-bold underline block mt-1">Ver esquema completo →</a>`
             },
             {
                 keywords: ['ubicacion', 'direccion', 'donde estan', 'donde queda', 'pudahuel', 'santiago', 'mapa', 'llegar'],
@@ -1157,24 +1161,24 @@
             {
                 keywords: ['calcular impacto', 'calcular mi impacto', 'calculadora', 'simular impacto', 'estimacion de impacto', 'cuantos metros cuadrados', 'superficie a recuperar'],
                 response: `📊 <strong>Estimación de material para recuperar</strong><br>
-                ¿Cuántos metros cuadrados de lona o textil publicitario quieres recuperar?<br>
+                ¿Cuántos metros cuadrados de lona o textil publicitario quiere recuperar tu empresa?<br>
                 <label for="impact-area-input" class="block text-xs font-bold text-gray-600 mt-3 mb-1">Superficie estimada (m²)</label>
                 <div class="flex gap-2">
-                    <input id="impact-area-input" type="text" inputmode="decimal" autocomplete="off" aria-label="Superficie estimada en metros cuadrados" placeholder="Ej.: 25,5" class="min-w-0 flex-1 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-volutiva-accent text-sm">
+                    <input id="impact-area-input" type="text" inputmode="decimal" autocomplete="off" aria-label="Superficie estimada en metros cuadrados" placeholder="Ej.: 25,5" onkeydown="if(event.key==='Enter'){event.preventDefault();calculateMaterialImpact(this.nextElementSibling)}" class="min-w-0 flex-1 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-volutiva-accent text-sm">
                     <button type="button" onclick="calculateMaterialImpact(this)" class="bg-volutiva-accent hover:bg-volutiva-charcoal text-white px-3 py-2 rounded-lg text-xs font-black">Calcular</button>
                 </div>
-                <p class="text-xs text-gray-500 mt-2">La cifra indica la superficie objetivo declarada. La recuperación efectiva se confirma al revisar el tipo y estado del material.</p>`
+                <p class="text-xs text-gray-500 mt-2">Obtendrás una cifra concreta de aporte en m². La superficie efectivamente aprovechable se confirma al revisar el material.</p>`
             },
             {
                 keywords: ['impacto', 'impacto ambiental', 'impacto social', 'sostenibilidad', 'esg', 'rse', 'huella'],
                 response: `🌱 <strong>Impacto de un proyecto:</strong><br>
                 Recuperar material publicitario permite darle una nueva vida en productos útiles y apoyar la producción local. El impacto específico —por ejemplo, material aprovechado y productos confeccionados— se debe estimar con los datos de cada pedido; no ofrecemos una cifra automática sin revisar el material.<br>
-                <a href="#impacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">Conocer los impactos y ODS relacionados →</a>`
+                <a href="#impacto" onclick="closeChat()" class="text-volutiva-accent font-bold underline block mt-2">Conocer los impactos y ODS relacionados →</a>`
             },
             {
                 keywords: ['contacto', 'correo', 'email', 'telefono', 'whatsapp', 'hablar con alguien', 'asesoria'],
                 response: `💬 <strong>Hablemos de tu proyecto</strong><br>
-                Puedes contarnos qué material tienes y qué necesitas producir en el <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline">formulario de contacto</a> o escribirnos por <a href="https://wa.me/56975824178?text=Hola%2C%20quiero%20hacer%20una%20consulta%20a%20Volutiva." target="_blank" rel="noopener noreferrer" class="text-volutiva-accent font-bold underline">WhatsApp</a>.`
+                Puedes contarnos qué material tienes y qué necesitas producir en el <a href="#contacto" onclick="closeChat()" class="text-volutiva-accent font-bold underline">formulario de contacto</a> o escribirnos por <a href="https://wa.me/56975824178?text=Hola%2C%20quiero%20hacer%20una%20consulta%20a%20Volutiva." target="_blank" rel="noopener noreferrer" class="text-volutiva-accent font-bold underline">WhatsApp</a>.`
             },
             {
                 keywords: ['ayuda', 'opciones', 'que puedo preguntar'],
@@ -1198,9 +1202,14 @@
 
         function showMaterialImpact(area) {
             const formattedArea = formatMaterialArea(area);
-            appendMessage('bot', `🌱 <strong>Objetivo de recuperación: ${formattedArea} m²</strong><br>
-                Esa es la superficie de material que indicas para evaluar. La cantidad aprovechable se confirma al revisar su tipo y estado; esta cifra no representa productos fabricados ni emisiones evitadas.<br>
-                <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">Compartir los datos de tu proyecto →</a>
+            appendMessage('bot', `🌱 <strong class="block text-base">Tu empresa propone recuperar</strong>
+                <strong class="block text-4xl text-volutiva-darkteal my-2">${formattedArea} m²</strong>
+                <span class="block text-xs font-black uppercase tracking-wider text-volutiva-accent">Meta cuantificable de economía circular</span>
+                <p class="mt-3"><strong>¿Qué aporta esta cifra?</strong><br>
+                Tu empresa define un indicador concreto: <strong>${formattedArea} m² de material publicitario para evaluar y recuperar</strong>. Se vincula principalmente con el <strong>ODS 12: Producción y consumo responsables</strong>, al extender la vida útil de lonas o textiles que quedarían en desuso. La confección local también puede aportar al <strong>ODS 8</strong> por el trabajo productivo local y al <strong>ODS 5</strong> por el impulso al trabajo de mujeres.</p>
+                <p class="text-xs text-gray-500 mt-2">Esta es la meta basada en los m² que ingresaste, no una medición final. El material aprovechable se confirma al revisarlo; la cifra no equivale a productos fabricados, residuos ya recuperados ni emisiones evitadas. Para reportar el resultado, solicita la medición del material efectivamente recibido y aprovechado.</p>
+                <a href="#impacto" onclick="closeChat()" class="text-volutiva-accent font-bold underline block mt-3">Ver los ODS y el impacto social →</a>
+                <a href="#contacto" onclick="closeChat()" class="text-volutiva-accent font-bold underline block mt-2">Compartir los datos de tu proyecto →</a>
                 <a href="https://wa.me/56975824178?text=Hola%2C%20quiero%20evaluar%20la%20recuperacion%20de%20${encodeURIComponent(formattedArea)}%20m2%20de%20material." target="_blank" rel="noopener noreferrer" class="text-volutiva-accent font-bold underline block mt-1">Consultar por WhatsApp →</a>`);
         }
 
@@ -1246,7 +1255,7 @@
 
             return bestMatch
                 ? bestMatch.response
-                : `No encontré una respuesta exacta para eso. Puedo ayudarte con productos, proceso, ODS, impacto o cotizaciones. Si prefieres, cuéntanos tu consulta por el <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline">formulario de contacto</a> o por <a href="https://wa.me/56975824178?text=Hola%2C%20tengo%20una%20consulta%20para%20Volutiva." target="_blank" rel="noopener noreferrer" class="text-volutiva-accent font-bold underline">WhatsApp</a>.`;
+                : `No encontré una respuesta exacta para eso. Puedo ayudarte con productos, proceso, ODS, impacto o cotizaciones. Si prefieres, cuéntanos tu consulta por el <a href="#contacto" onclick="closeChat()" class="text-volutiva-accent font-bold underline">formulario de contacto</a> o por <a href="https://wa.me/56975824178?text=Hola%2C%20tengo%20una%20consulta%20para%20Volutiva." target="_blank" rel="noopener noreferrer" class="text-volutiva-accent font-bold underline">WhatsApp</a>.`;
         }
 
         function processBotResponse(userText) {
