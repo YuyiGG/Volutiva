@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <!-- 1. CONFIGURACIÓN E INICIO DEL DOCUMENTO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volutiva Chile | Economía Circular y Productos Corporativos Sustentables</title>
+    <meta name="description" content="Volutiva transforma materiales publicitarios y textiles en desuso en productos corporativos personalizados, promoviendo la economía circular, el diseño y el impacto social en Chile.">
+    <meta name="keywords" content="Volutiva Chile, economía circular Chile, regalos corporativos sustentables, merchandising sustentable Chile, reutilización de lonas publicitarias, Pudahuel">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        volutiva: {
+                            teal: '#52B5BE',    /* Color turquesa pastel oficial del logo */
+                            darkteal: '#2F7C84',/* Turquesa oscuro para contrastes */
+                            sand: '#F4EFE6',    /* Fondo arena cálido */
+                            cream: '#FAF6F0',   /* Crema suave */
+                            charcoal: '#1A1A1A',/* Texto principal más oscuro para mayor contraste */
+                            accent: '#C86D51'   /* Acento terracota/coral */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'float': 'float 4s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'marquee': 'marquee 25s linear infinite', 
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Estilos adicionales para los acordeones FAQ */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary ~ * { animation: fadeIn 0.4s ease-in-out; }
+        details[open] summary .faq-icon { transform: rotate(180deg); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Ocultar barra de scroll en el carrusel infinito y filtros */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Animación suave para los filtros del catálogo */
+        .catalog-item { transition: all 0.4s ease-in-out; }
+    </style>
+</head>
+<body class="bg-volutiva-cream text-volutiva-charcoal font-sans antialiased selection:bg-volutiva-accent selection:text-white overflow-x-hidden">
+
+    <!-- 2. NAVBAR -->
+    <div class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <!-- Top Announcement Bar -->
+        <div class="bg-volutiva-accent text-white text-[11px] font-black py-2.5 px-4 text-center tracking-[0.2em] uppercase flex items-center justify-center gap-3 shadow-md relative z-50">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+            </span>
+            AGENDA ABIERTA: PROYECTOS CORPORATIVOS
+            <a href="#contacto" class="underline hover:text-volutiva-sand transition-colors ml-1">COTIZA AHORA</a>
+        </div>
+
+        <header class="bg-white/95 backdrop-blur-md border-b border-volutiva-sand shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                
+                <!-- Logo -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-full overflow-hidden shadow-md group-hover:scale-105 transition-transform border-2 border-volutiva-darkteal flex items-center justify-center bg-white">
+                        <img src="C:\Users\yoyit\Downloads\Logo_Volutiva.jpg" alt="Logo Volutiva Chile" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black tracking-tighter text-volutiva-charcoal">Volutiva</span>
+                        <span class="block text-[10px] uppercase tracking-[0.3em] text-volutiva-accent font-extrabold -mt-1">Chile</span>
+                    </div>
+                </a>
+
+                <!-- Menú de navegación de escritorio -->
+                <nav class="hidden xl:flex items-center gap-8 text-sm font-bold text-gray-800">
+                    <a href="#que-es" class="relative group py-2 hover:text-volutiva-darkteal transition-colors">
+                        ¿Qué es?
+                        <span class="absolute bottom-0 left-0 w-0 h-[3px] bg-volutiva-accent transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#proceso" class="relative group py-2 hover:text-volutiva-darkteal transition-colors">
+                        Proceso
+                        <span class="absolute bottom-0 left-0 w-0 h-[3px] bg-volutiva-accent transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#catalogo" class="relative group py-2 hover:text-volutiva-darkteal transition-colors">
+                        Catálogo
+                        <span class="absolute bottom-0 left-0 w-0 h-[3px] bg-volutiva-accent transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#casos" class="relative group py-2 hover:text-volutiva-darkteal transition-colors">
+                        Casos
+                        <span class="absolute bottom-0 left-0 w-0 h-[3px] bg-volutiva-accent transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#aliados" class="relative group py-2 hover:text-volutiva-darkteal transition-colors">
+                        Aliados
+                        <span class="absolute bottom-0 left-0 w-0 h-[3px] bg-volutiva-accent transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </nav>
+
+                <!-- Acciones de Cabecera -->
+                <div class="hidden md:flex items-center gap-5">
+                    <a href="https://www.instagram.com/volutiva.chile" target="_blank" aria-label="Instagram de Volutiva Chile" class="text-gray-800 hover:text-volutiva-accent text-xl transition-transform hover:scale-110" title="Instagram @volutiva.chile">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#contacto" class="bg-volutiva-charcoal text-white px-7 py-3 rounded-full text-sm font-black shadow-lg hover:bg-volutiva-accent hover:shadow-xl hover:-translate-y-0.5 transition-all uppercase tracking-wider">
+                        Hablemos
+                    </a>
+                </div>
+
+                <!-- Botón de Menú Móvil -->
+                <button id="menu-btn" aria-label="Abrir menú de navegación" class="xl:hidden text-volutiva-charcoal focus:outline-none text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Menú Desplegable para Celulares -->
+            <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-volutiva-sand px-6 py-6 space-y-4 shadow-2xl max-h-[85vh] overflow-y-auto">
+                <a href="#que-es" class="block text-gray-800 font-bold text-lg hover:text-volutiva-accent">¿Qué es Volutiva?</a>
+                <a href="#proceso" class="block text-gray-800 font-bold text-lg hover:text-volutiva-accent">Nuestro Proceso</a>
+                <a href="#catalogo" class="block text-gray-800 font-bold text-lg hover:text-volutiva-accent">Catálogo</a>
+                <a href="#casos" class="block text-gray-800 font-bold text-lg hover:text-volutiva-accent">Casos de Éxito</a>
+                <a href="#aliados" class="block text-gray-800 font-bold text-lg hover:text-volutiva-accent">Aliados</a>
+                <a href="#faq" class="block text-gray-800 font-bold text-lg hover:text-volutiva-accent">FAQ</a>
+                <div class="pt-6 border-t border-gray-100">
+                    <a href="https://wa.me/56975824178?text=Hola%2C%20quiero%20trabajar%20con%20ustedes%20y%20transformar%20mis%20materiales%20con%20Volutiva." target="_blank" class="w-full text-center block bg-volutiva-accent text-white px-5 py-4 rounded-xl font-black uppercase tracking-wider shadow-lg">
+                        <i class="fab fa-whatsapp mr-2"></i> Cotizar Ahora
+                    </a>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- 3. SECCIÓN HERO DE ALTO IMPACTO VISUAL -->
+    <section id="inicio" class="relative pt-40 pb-20 md:pt-48 md:pb-28 bg-volutiva-cream overflow-hidden">
+        
+        <!-- Texto Gigante de Fondo -->
+        <div class="absolute top-32 left-[-5%] w-[110%] overflow-hidden opacity-[0.03] pointer-events-none select-none z-0">
+            <h1 class="text-[12rem] md:text-[20rem] font-black tracking-tighter text-volutiva-charcoal leading-none">CIRCULAR</h1>
+        </div>
+        
+        <div class="absolute top-10 right-10 w-96 h-96 bg-volutiva-teal/10 rounded-full blur-[80px] animate-pulse-slow z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mt-10 sm:mt-0">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left opacity-0 animate-fade-in-up">
+                    <div class="inline-flex items-center gap-2 bg-volutiva-charcoal text-white px-4 py-2 rounded-full text-[10px] sm:text-xs font-black tracking-[0.15em] uppercase shadow-lg">
+                        <span class="text-volutiva-accent">●</span> INNOVACIÓN B2B CHILE
+                    </div>
+                    
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-volutiva-charcoal tracking-tighter leading-[1.05]">
+                        No botes tu publicidad.<br>
+                        <span class="relative inline-block mt-3">
+                            <span class="absolute inset-0 bg-volutiva-darkteal transform -skew-x-3 shadow-lg"></span>
+                            <span class="relative z-10 text-white px-5 py-2 inline-block">Hazla inolvidable.</span>
+                        </span>
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                        Transformamos las lonas de tu última campaña en <strong>regalos corporativos de alto estándar</strong>. Cumple tus metas de sustentabilidad con productos únicos que tu equipo amará.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="https://wa.me/56975824178?text=Hola%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" class="w-full sm:w-auto bg-volutiva-accent hover:bg-orange-700 text-white font-black px-8 py-4.5 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all flex items-center justify-center gap-3 text-base text-center uppercase tracking-wider">
+                            <i class="fab fa-whatsapp text-xl"></i> Cotizar mi proyecto
+                        </a>
+                        <a href="#casos" class="w-full sm:w-auto bg-white border-2 border-volutiva-charcoal text-volutiva-charcoal font-black px-8 py-4 rounded-xl hover:bg-volutiva-charcoal hover:text-white transition-all flex items-center justify-center gap-2 text-sm text-center uppercase tracking-wider shadow-sm">
+                            Ver Caso LATAM
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-5 relative opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="relative mx-auto max-w-md lg:max-w-none animate-float z-10">
+                        <div class="absolute inset-0 bg-volutiva-accent rounded-[2rem] transform translate-x-4 translate-y-4"></div>
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800" alt="Productos corporativos de economía circular" class="relative rounded-[2rem] shadow-2xl object-cover w-full h-[400px] lg:h-[520px] border-4 border-volutiva-charcoal">
+                        
+                        <div class="absolute -bottom-8 -left-4 sm:-left-10 bg-volutiva-charcoal p-5 rounded-2xl shadow-2xl border border-gray-700 flex items-center gap-4">
+                            <div class="w-12 h-12 bg-volutiva-accent text-white rounded-full flex items-center justify-center text-xl shadow-inner">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em]">Impacto Real</p>
+                                <p class="font-black text-white text-lg">0% al vertedero</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CINTA INFINITA (MARQUEE) -->
+    <div class="bg-volutiva-darkteal py-4 border-y-4 border-volutiva-charcoal overflow-hidden relative flex">
+        <div class="flex whitespace-nowrap animate-marquee">
+            <span class="text-white text-sm font-black uppercase tracking-widest mx-6 flex items-center gap-4"><i class="fas fa-star text-volutiva-accent"></i> 100% RECICLADO</span>
+            <span class="text-white text-sm font-black uppercase tracking-widest mx-6 flex items-center gap-4"><i class="fas fa-star text-volutiva-accent"></i> MERCHANDISING SUSTENTABLE</span>
+            <span class="text-white text-sm font-black uppercase tracking-widest mx-6 flex items-center gap-4"><i class="fas fa-star text-volutiva-accent"></i> IMPACTO ESG</span>
+            <span class="text-white text-sm font-black uppercase tracking-widest mx-6 flex items-center gap-4"><i class="fas fa-star text-volutiva-accent"></i> PRODUCCIÓN CHILENA</span>
+            <span class="text-white text-sm font-black uppercase tracking-widest mx-6 flex items-center gap-4"><i class="fas fa-star text-volutiva-accent"></i> DISEÑO EXCLUSIVO</span>
+            <span class="text-white text-sm font-black uppercase tracking-widest mx-6 flex items-center gap-4"><i class="fas fa-star text-volutiva-accent"></i> 100% RECICLADO</span>
+            <span class="text-white text-sm font-black uppercase tracking-widest mx-6 flex items-center gap-4"><i class="fas fa-star text-volutiva-accent"></i> MERCHANDISING SUSTENTABLE</span>
+            <span class="text-white text-sm font-black uppercase tracking-widest mx-6 flex items-center gap-4"><i class="fas fa-star text-volutiva-accent"></i> IMPACTO ESG</span>
+            <span class="text-white text-sm font-black uppercase tracking-widest mx-6 flex items-center gap-4"><i class="fas fa-star text-volutiva-accent"></i> PRODUCCIÓN CHILENA</span>
+            <span class="text-white text-sm font-black uppercase tracking-widest mx-6 flex items-center gap-4"><i class="fas fa-star text-volutiva-accent"></i> DISEÑO EXCLUSIVO</span>
+        </div>
+    </div>
+
+    <!-- BARRA DE CONFIANZA E HITOS -->
+    <section class="bg-volutiva-charcoal text-white py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-10">Empresas que ya transformaron sus residuos</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:divide-x divide-gray-700">
+                <div class="space-y-2">
+                    <span class="block text-4xl sm:text-5xl font-black text-white">+150</span>
+                    <span class="text-xs text-volutiva-accent uppercase font-bold tracking-wider">Historias de Éxito</span>
+                </div>
+                <div class="space-y-2">
+                    <span class="block text-4xl sm:text-5xl font-black text-white">100%</span>
+                    <span class="text-xs text-volutiva-accent uppercase font-bold tracking-wider">Material Recuperado</span>
+                </div>
+                <div class="space-y-2">
+                    <span class="block text-4xl sm:text-5xl font-black text-white">0</span>
+                    <span class="text-xs text-volutiva-accent uppercase font-bold tracking-wider">Residuos al Vertedero</span>
+                </div>
+                <div class="flex flex-col items-center justify-center space-y-2">
+                    <div class="bg-white px-4 py-2 rounded-xl h-14 flex items-center justify-center shadow-lg">
+                        <img src="C:\Users\yoyit\Downloads\Latam-logo_.png" alt="LATAM Airlines" class="h-8 w-auto object-contain">
+                    </div>
+                    <span class="text-xs text-volutiva-accent uppercase font-bold tracking-wider mt-2 block">Caso de Éxito</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SECCIÓN ¿QUÉ ES VOLUTIVA? -->
+    <section id="que-es" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs uppercase tracking-widest text-volutiva-accent font-black">Nuestra Esencia</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-volutiva-charcoal uppercase leading-tight">Más que reciclar, transformamos con estándar corporativo.</h2>
+                <p class="text-gray-600 text-base sm:text-lg font-medium leading-relaxed">
+                    Volutiva es un emprendimiento chileno liderado por mujeres que opera desde Pudahuel, impulsando la economía circular mediante diseño exclusivo, trazabilidad y alianzas de alto nivel.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-volutiva-cream/60 p-8 rounded-3xl border border-volutiva-sand shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all">
+                    <div class="text-3xl mb-4 text-volutiva-darkteal">♻️</div>
+                    <h3 class="font-black text-volutiva-charcoal text-lg mb-2">Economía circular</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed font-medium">Extendemos la vida útil de materiales que ya cumplieron su primera función.</p>
+                </div>
+                <div class="bg-volutiva-cream/60 p-8 rounded-3xl border border-volutiva-sand shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all">
+                    <div class="text-3xl mb-4 text-volutiva-darkteal">🎨</div>
+                    <h3 class="font-black text-volutiva-charcoal text-lg mb-2">Diseño exclusivo</h3>
+                    <p class="text-sm text-gray-600 font-medium leading-relaxed">Convertimos gráficos impresos en accesorios y productos únicos e irrepetibles.</p>
+                </div>
+                <div class="bg-volutiva-cream/60 p-8 rounded-3xl border border-volutiva-sand shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all">
+                    <div class="text-3xl mb-4 text-volutiva-darkteal">🧵</div>
+                    <h3 class="font-black text-volutiva-charcoal text-lg mb-2">Producción local</h3>
+                    <p class="text-sm text-gray-600 font-medium leading-relaxed">Procesos minuciosos de limpieza, corte y confección artesanal experta.</p>
+                </div>
+                <div class="bg-volutiva-cream/60 p-8 rounded-3xl border border-volutiva-sand shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all">
+                    <div class="text-3xl mb-4 text-volutiva-darkteal">🤝</div>
+                    <h3 class="font-black text-volutiva-charcoal text-lg mb-2">Impacto social</h3>
+                    <p class="text-sm text-gray-600 font-medium leading-relaxed">Generamos valor ambiental, redes de apoyo y desarrollo para la comunidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SECCIÓN NUESTRO PROCESO -->
+    <section id="proceso" class="py-24 bg-volutiva-sand/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <span class="text-xs uppercase tracking-widest text-volutiva-accent font-black">Paso a Paso & Taller Real</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-volutiva-charcoal uppercase leading-tight">Proceso de Transformación Trazable</h2>
+                <p class="text-gray-600 text-base sm:text-lg font-medium">El recorrido real de cada material respaldado por altos estándares de calidad y manos expertas.</p>
+            </div>
+
+            <!-- BLOQUE PRINCIPAL -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-white p-6 sm:p-10 rounded-[2.5rem] border border-volutiva-sand shadow-xl">
+                <div class="lg:col-span-7 relative rounded-2xl overflow-hidden shadow-lg border-2 border-volutiva-charcoal bg-volutiva-charcoal">
+                    <video autoplay muted loop playsinline class="w-full h-[320px] sm:h-[420px] object-cover">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-sewing-on-a-sewing-machine-41793-large.mp4" type="video/mp4">
+                        Tu navegador no soporta videos HTML5.
+                    </video>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-volutiva-accent text-white px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-[0.15em] shadow-md flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> TALLER EN VIVO (PUDAHUEL)
+                        </span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-xs uppercase tracking-widest text-volutiva-darkteal font-black">Transparencia B2B</span>
+                    <h3 class="text-2xl sm:text-3xl font-black text-volutiva-charcoal leading-tight">Manos expertas transformando residuos en valor</h3>
+                    <p class="text-gray-600 text-sm sm:text-base font-medium leading-relaxed">
+                        Cada proyecto que ingresa a nuestro taller en Pudahuel sigue un protocolo riguroso. Desde la selección inicial hasta la confección de piezas finales, garantizamos calidad impecable.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-700 font-bold">
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-volutiva-accent text-lg"></i> Higienización y sanitización industrial</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-volutiva-accent text-lg"></i> Cortes precisos aprovechando las gráficas</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-volutiva-accent text-lg"></i> Confección a mano con refuerzos corporativos</li>
+                    </ul>
+                </div>
+            </div>
+
+           
+        </div>
+    </section>
+
+    <!-- TESTIMONIO DE ALTO IMPACTO -->
+    <section class="py-24 bg-volutiva-charcoal text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=1920')] bg-cover bg-center mix-blend-overlay"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <i class="fas fa-quote-left text-6xl text-volutiva-accent mb-8 block opacity-80"></i>
+            <h3 class="text-2xl sm:text-4xl font-black leading-snug mb-10 text-volutiva-cream">
+                "Pasamos de tener una bodega llena de lonas inservibles a entregar el regalo corporativo más valorado por nuestro equipo. El nivel de terminación y diseño de Volutiva es increíble."
+            </h3>
+            <div class="flex flex-col items-center justify-center">
+                <p class="font-black text-xl text-white">Cliente Corporativo</p>
+                <p class="text-volutiva-teal text-sm font-bold uppercase tracking-widest mt-1">Sector Retail y Marketing</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SECCIÓN CATÁLOGO DE PRODUCTOS -->
+    <section id="catalogo" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <span class="text-xs uppercase tracking-widest text-volutiva-accent font-black">Muestrario de Soluciones</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-volutiva-charcoal uppercase leading-tight">Catálogo de Productos</h2>
+                <p class="text-gray-600 text-base sm:text-lg font-medium">Explora lo que hemos creado. Diseños duraderos e impermeables elaborados a partir de campañas recuperadas reales.</p>
+            </div>
+
+            <!-- Filtros del Catálogo -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="filterCatalog('all', this)" class="catalog-filter-btn px-6 py-2.5 rounded-full text-sm font-black transition-all bg-volutiva-charcoal text-white shadow-md">Todos</button>
+                <button onclick="filterCatalog('oficina', this)" class="catalog-filter-btn px-6 py-2.5 rounded-full text-sm font-black transition-all bg-gray-100 text-gray-600 hover:bg-gray-200">Oficina & Tech</button>
+                <button onclick="filterCatalog('bolsos', this)" class="catalog-filter-btn px-6 py-2.5 rounded-full text-sm font-black transition-all bg-gray-100 text-gray-600 hover:bg-gray-200">Bolsos & Mochilas</button>
+                <button onclick="filterCatalog('accesorios', this)" class="catalog-filter-btn px-6 py-2.5 rounded-full text-sm font-black transition-all bg-gray-100 text-gray-600 hover:bg-gray-200">Accesorios</button>
+            </div>
+
+            <!-- Grilla de Catálogo -->
+            <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Producto 1 -->
+                <div class="catalog-item bg-volutiva-cream/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-volutiva-sand flex flex-col group cursor-pointer" data-category="oficina" onclick="openModal('Porta Notebook Corporativo', 'Fundas protectoras acolchadas e impermeables para computadores. Ideales para equipos comerciales y ejecutivos.', ['https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600'])">
+                    <div class="relative overflow-hidden h-64">
+                        <div class="absolute top-4 left-4 z-10 bg-volutiva-charcoal text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md">Edición LATAM</div>
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600" alt="Porta notebooks" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between bg-white">
+                        <div>
+                            <h3 class="text-xl font-black text-volutiva-charcoal mb-1">Porta Notebook 13"/15"</h3>
+                            <p class="text-xs text-gray-500 font-bold mb-3">Material: Lona PVC Acolchada</p>
+                        </div>
+                        <span class="text-volutiva-accent font-black text-sm inline-flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                            Ver detalles <i class="fas fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="catalog-item bg-volutiva-cream/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-volutiva-sand flex flex-col group cursor-pointer" data-category="bolsos" onclick="openModal('Mochila Urbana', 'Mochilas de alta resistencia confeccionadas a partir de lonas publicitarias recuperadas. Uso diario con compartimientos seguros.', ['https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=600'])">
+                    <div class="relative overflow-hidden h-64">
+                        <div class="absolute top-4 left-4 z-10 bg-volutiva-accent text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md">Top Ventas B2B</div>
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=600" alt="Mochilas sustentables" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between bg-white">
+                        <div>
+                            <h3 class="text-xl font-black text-volutiva-charcoal mb-1">Mochila Urbana Classic</h3>
+                            <p class="text-xs text-gray-500 font-bold mb-3">Material: Lona Publicitaria / Textil</p>
+                        </div>
+                        <span class="text-volutiva-accent font-black text-sm inline-flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                            Ver detalles <i class="fas fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="catalog-item bg-volutiva-cream/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-volutiva-sand flex flex-col group cursor-pointer" data-category="bolsos" onclick="openModal('Bolso Deportivo / Viaje', 'Bolsos reutilizables de gran capacidad. Soportan peso considerable, son lavables e impermeables.', ['https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=600'])">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=600" alt="Bolsos corporativos" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between bg-white">
+                        <div>
+                            <h3 class="text-xl font-black text-volutiva-charcoal mb-1">Bolso Utilitario XL</h3>
+                            <p class="text-xs text-gray-500 font-bold mb-3">Material: Lona Exterior de Alta Resistencia</p>
+                        </div>
+                        <span class="text-volutiva-accent font-black text-sm inline-flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                            Ver detalles <i class="fas fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="catalog-item bg-volutiva-cream/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-volutiva-sand flex flex-col group cursor-pointer" data-category="bolsos" onclick="openModal('Tote Bag para Eventos', 'El regalo perfecto para activaciones de marca. Práctico, moderno y un lienzo perfecto para mostrar los colores de tu campaña original.', ['https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?auto=format&fit=crop&q=80&w=600'])">
+                    <div class="relative overflow-hidden h-64">
+                        <div class="absolute top-4 left-4 z-10 bg-volutiva-darkteal text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md">Ideal Activaciones</div>
+                        <img src="https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?auto=format&fit=crop&q=80&w=600" alt="Carteras y accesorios" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between bg-white">
+                        <div>
+                            <h3 class="text-xl font-black text-volutiva-charcoal mb-1">Tote Bag & Carteras</h3>
+                            <p class="text-xs text-gray-500 font-bold mb-3">Material: Gráficas de PVC Liviano</p>
+                        </div>
+                        <span class="text-volutiva-accent font-black text-sm inline-flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                            Ver detalles <i class="fas fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="catalog-item bg-volutiva-cream/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-volutiva-sand flex flex-col group cursor-pointer" data-category="oficina" onclick="openModal('Estuches y Neceseres', 'Aprovechamos los retazos más pequeños para crear estuches organizadores. Perfectos para cargadores, lápices o uso personal.', ['https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&q=80&w=600'])">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&q=80&w=600" alt="Estuches corporativos" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between bg-white">
+                        <div>
+                            <h3 class="text-xl font-black text-volutiva-charcoal mb-1">Estuches y Neceseres</h3>
+                            <p class="text-xs text-gray-500 font-bold mb-3">Material: Recortes de Lona Mixta</p>
+                        </div>
+                        <span class="text-volutiva-accent font-black text-sm inline-flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                            Ver detalles <i class="fas fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="catalog-item bg-volutiva-cream/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-volutiva-sand flex flex-col group cursor-pointer" data-category="accesorios" onclick="openModal('Lanyards y Llaveros', 'Elaborados a partir de cintas de seguridad, mallas publicitarias y sobrantes de confección. El accesorio diario con mayor visibilidad.', ['https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=600'])">
+                    <div class="relative overflow-hidden h-64">
+                        <div class="absolute top-4 left-4 z-10 bg-volutiva-charcoal text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md">Merchandising</div>
+                        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=600" alt="Accesorios corporativos" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between bg-white">
+                        <div>
+                            <h3 class="text-xl font-black text-volutiva-charcoal mb-1">Lanyards & Llaveros</h3>
+                            <p class="text-xs text-gray-500 font-bold mb-3">Material: Malla Mesh y Cintas Recuperadas</p>
+                        </div>
+                        <span class="text-volutiva-accent font-black text-sm inline-flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                            Ver detalles <i class="fas fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contacto" class="inline-block bg-white border-2 border-volutiva-charcoal text-volutiva-charcoal font-black px-8 py-4 rounded-xl hover:bg-volutiva-charcoal hover:text-white transition-all uppercase tracking-wider shadow-sm">
+                    ¿Tienes una idea distinta? Hablemos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7 & 8. SECCIÓN UNIFICADA: CASOS DE ÉXITO Y SOLUCIONES -->
+    <section id="casos" class="py-24 bg-volutiva-sand/40 relative overflow-hidden border-y border-volutiva-sand/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-24">
+            <!-- LATAM -->
+            <div>
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-xs uppercase tracking-widest text-volutiva-accent font-black">Credibilidad Comprobada</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-volutiva-charcoal uppercase leading-tight">Casos de Éxito Reales</h2>
+                </div>
+
+                <div class="bg-white rounded-[2.5rem] p-8 sm:p-14 border border-volutiva-sand grid grid-cols-1 lg:grid-cols-12 gap-12 items-center shadow-xl">
+                    <div class="lg:col-span-7 space-y-6">
+                        <span class="bg-volutiva-charcoal text-white px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-md">HITO DESTACADO B2B</span>
+                        <h3 class="text-3xl sm:text-4xl font-black text-volutiva-charcoal leading-tight">
+                            De un letrero masivo a +150 historias con LATAM Airlines.
+                        </h3>
+                        <p class="text-sm font-black text-volutiva-darkteal uppercase tracking-widest">LATAM Airlines × Global Vía Pública × Volutiva</p>
+                        <p class="text-gray-600 text-lg font-medium leading-relaxed">
+                            Tras una gran campaña publicitaria en formato <em>Building Wrap</em>, el material fue rescatado en su totalidad y transformado por nuestro equipo en <strong class="text-volutiva-charcoal">más de 150 exclusivos porta notebooks</strong> para el equipo corporativo de LATAM.
+                        </p>
+                        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-gray-200 text-center">
+                            <div>
+                                <span class="block text-2xl sm:text-3xl font-black text-volutiva-accent">100%</span>
+                                <span class="text-xs text-gray-500 font-bold uppercase tracking-wider">Recuperado</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl sm:text-3xl font-black text-volutiva-accent">+150</span>
+                                <span class="text-xs text-gray-500 font-bold uppercase tracking-wider">Porta Notebooks</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl sm:text-3xl font-black text-volutiva-accent">0</span>
+                                <span class="text-xs text-gray-500 font-bold uppercase tracking-wider">Al Vertedero</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5">
+                        <div class="relative">
+                            <div class="absolute -inset-4 bg-volutiva-darkteal/20 rounded-[2.5rem] transform rotate-3 blur-md"></div>
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Caso de éxito Volutiva y LATAM" class="relative rounded-[2.5rem] shadow-2xl object-cover w-full h-[400px]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SOLUCIONES EMPRESAS -->
+            <div>
+                <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                    <span class="text-xs uppercase tracking-widest text-volutiva-accent font-black">B2B & Propósito</span>
+                    <h3 class="text-3xl sm:text-4xl font-black text-volutiva-charcoal uppercase leading-tight">Soluciones para Empresas</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-8 rounded-3xl border border-volutiva-sand shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-volutiva-charcoal text-volutiva-accent flex items-center justify-center text-2xl font-bold">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <h4 class="font-black text-volutiva-charcoal text-xl">Regalos con Historia</h4>
+                            <p class="text-sm text-gray-600 font-medium leading-relaxed">
+                                Sorprende a tus colaboradores con piezas de alta gama hechas a mano con los materiales de tus propias campañas.
+                            </p>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-gray-100">
+                            <a href="https://wa.me/56975824178?text=Hola%2C%20quiero%20cotizar%20regalos%20corporativos." target="_blank" class="inline-flex items-center gap-2 text-sm font-black text-volutiva-darkteal uppercase tracking-wider group-hover:text-volutiva-accent transition-colors">
+                                Cotizar regalos <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border border-volutiva-sand shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-volutiva-charcoal text-volutiva-accent flex items-center justify-center text-2xl font-bold">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <h4 class="font-black text-volutiva-charcoal text-xl">Activaciones Circulares</h4>
+                            <p class="text-sm text-gray-600 font-medium leading-relaxed">
+                                Haz que tus eventos hablen por sí solos impregnando el ADN gráfico de tu marca en accesorios útiles.
+                            </p>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-gray-100">
+                            <a href="https://wa.me/56975824178?text=Hola%2C%20quiero%20potenciar%20mis%20activaciones." target="_blank" class="inline-flex items-center gap-2 text-sm font-black text-volutiva-darkteal uppercase tracking-wider group-hover:text-volutiva-accent transition-colors">
+                                Potenciar activaciones <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl border border-volutiva-sand shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <div class="w-14 h-14 rounded-2xl bg-volutiva-charcoal text-volutiva-accent flex items-center justify-center text-2xl font-bold">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h4 class="font-black text-volutiva-charcoal text-xl">Compromiso ESG</h4>
+                            <p class="text-sm text-gray-600 font-medium leading-relaxed">
+                                Mide y transforma tu impacto ambiental apoyando directamente a mujeres creadoras locales en Pudahuel.
+                            </p>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-gray-100">
+                            <a href="https://wa.me/56975824178?text=Hola%2C%20quiero%20cumplir%20metas%20ESG." target="_blank" class="inline-flex items-center gap-2 text-sm font-black text-volutiva-darkteal uppercase tracking-wider group-hover:text-volutiva-accent transition-colors">
+                                Cumplir metas ESG <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. SECCIÓN ALIADOS -->
+    <section id="aliados" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs uppercase tracking-widest text-volutiva-accent font-black">Ecosistema y Confianza</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-volutiva-charcoal uppercase leading-tight">Empresas Aliadas</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white p-8 rounded-3xl border border-volutiva-sand shadow-sm flex flex-col items-center justify-center text-center hover:shadow-lg transition-all group min-h-[160px]">
+                    <img src="C:\Users\yoyit\Downloads\Latam-logo_.png" alt="LATAM Airlines" class="h-12 w-auto object-contain group-hover:scale-110 transition-transform mb-4">
+                    <span class="text-[10px] text-gray-400 font-black uppercase tracking-widest">Caso de Éxito B2B</span>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-volutiva-sand shadow-sm flex flex-col items-center justify-center text-center hover:shadow-lg transition-all group min-h-[160px]">
+                    <img src="C:\Users\yoyit\Downloads\logo_global.png" alt="Global Vía Pública" class="h-12 w-auto object-contain group-hover:scale-110 transition-transform mb-4">
+                    <span class="text-[10px] text-gray-400 font-black uppercase tracking-widest">Aliado Logístico</span>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-volutiva-sand shadow-sm flex flex-col items-center justify-center text-center hover:shadow-lg transition-all group min-h-[160px]">
+                    <img src="C:\Users\yoyit\Downloads\Logo_FGE.png" alt="Fundación Gestionar Esperanzas" class="h-12 w-auto object-contain group-hover:scale-110 transition-transform mb-4">
+                    <span class="text-[10px] text-gray-400 font-black uppercase tracking-widest">Aliado Social</span>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-volutiva-sand shadow-sm flex flex-col items-center justify-center text-center hover:shadow-lg transition-all group min-h-[160px]">
+                    <img src="C:\Users\yoyit\Downloads\LOGO-UA-color-transparente.png" alt="Universidad Autónoma de Chile" class="h-12 w-auto object-contain group-hover:scale-110 transition-transform mb-4">
+                    <span class="text-[10px] text-gray-400 font-black uppercase tracking-widest">Institución Académica</span>
+                </div>
+            </div>
+
+            <!-- Banner Alianza B2B -->
+            <div class="bg-volutiva-charcoal text-white p-10 sm:p-12 rounded-[2.5rem] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 border-b-8 border-b-volutiva-accent">
+                <div class="flex items-center gap-6 text-center md:text-left flex-col md:flex-row">
+                    <div class="w-20 h-20 rounded-full overflow-hidden shrink-0 border-4 border-volutiva-accent flex items-center justify-center bg-white">
+                        <img src="C:\Users\yoyit\Downloads\Logo_Volutiva.jpg" alt="Logo Volutiva" class="w-full h-full object-cover">
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-2xl font-black text-white">¿Quieres sumarte al cambio?</h4>
+                        <p class="text-sm sm:text-base text-gray-300 font-medium">Conectamos el diseño local y la economía circular con marcas con propósito.</p>
+                    </div>
+                </div>
+                <a href="#contacto" class="bg-volutiva-accent hover:bg-white hover:text-volutiva-charcoal text-white font-black px-8 py-4 rounded-xl transition-all text-sm uppercase tracking-widest shrink-0 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                    Crear una alianza
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10, 11, 12: IMPACTO, NOSOTROS Y MAPA -->
+    <section id="impacto" class="py-24 bg-volutiva-darkteal text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+                <span class="text-xs uppercase tracking-widest text-volutiva-accent font-black">Propósito Real</span>
+                <h2 class="text-3xl sm:text-4xl font-black uppercase">Transformamos materiales. Generamos impacto.</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 space-y-5">
+                    <h3 class="text-xl font-black text-volutiva-sand">Impacto Ambiental</h3>
+                    <ul class="space-y-4 text-sm sm:text-base text-gray-200 font-medium">
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-volutiva-accent text-lg"></i> Reutilización directa de lonas y textiles publicitarios.</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-volutiva-accent text-lg"></i> Extensión de la vida útil de recursos industriales.</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-volutiva-accent text-lg"></i> Reducción efectiva de residuos enviados a vertederos.</li>
+                    </ul>
+                </div>
+                <div class="bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 space-y-5">
+                    <h3 class="text-xl font-black text-volutiva-sand">Impacto Social</h3>
+                    <ul class="space-y-4 text-sm sm:text-base text-gray-200 font-medium">
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-volutiva-accent text-lg"></i> Emprendimiento femenino e innovación local en Pudahuel.</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-volutiva-accent text-lg"></i> Generación de oportunidades y desarrollo de capacidades.</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-volutiva-accent text-lg"></i> Vinculación cercana con Fundación Gestionar Esperanzas.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-xs uppercase tracking-widest text-volutiva-accent font-black">El Equipo</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-volutiva-charcoal uppercase leading-tight">Las mujeres detrás de Volutiva</h2>
+                <p class="text-gray-600 text-base font-medium leading-relaxed">
+                    Volutiva nace desde una mirada emprendedora y femenina que busca demostrar que la sustentabilidad también puede convertirse en diseño, innovación y oportunidades reales.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                <div class="bg-volutiva-cream/50 p-8 rounded-3xl border border-volutiva-sand text-center space-y-4 shadow-sm">
+                    <img src="https://images.unsplash.com" alt="Giselle Becerra" class="w-32 h-32 rounded-full object-cover mx-auto shadow-md border-4 border-white">
+                    <div>
+                        <h3 class="text-xl font-black text-volutiva-charcoal">Giselle Becerra G.</h3>
+                        <p class="text-xs uppercase tracking-widest text-volutiva-darkteal font-bold mt-1">Co-fundadora</p>
+                    </div>
+                </div>
+                <div class="bg-volutiva-cream/50 p-8 rounded-3xl border border-volutiva-sand text-center space-y-4 shadow-sm">
+                    <img src="https://images.unsplash.com" alt="Alida Guillén" class="w-32 h-32 rounded-full object-cover mx-auto shadow-md border-4 border-white">
+                    <div>
+                        <h3 class="text-xl font-black text-volutiva-charcoal">Alida Guillén A.</h3>
+                        <p class="text-xs uppercase tracking-widest text-volutiva-darkteal font-bold mt-1">Co-fundadora</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-volutiva-sand/40 border-y border-volutiva-sand/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div class="lg:col-span-6 space-y-5">
+                    <span class="text-xs uppercase tracking-widest text-volutiva-accent font-black">Nuestra Casa</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-volutiva-charcoal uppercase leading-tight">Desde Pudahuel al mundo corporativo</h2>
+                    <p class="text-gray-600 font-medium leading-relaxed text-sm">
+                        Operamos desde la Región Metropolitana, conectando la creación local con las necesidades de sostenibilidad y economía circular de grandes empresas.
+                    </p>
+                    <div class="text-sm text-gray-800 font-bold bg-white inline-block px-4 py-2 rounded-lg border border-volutiva-sand">
+                        <i class="fas fa-map-marker-alt text-volutiva-accent mr-2 text-lg"></i> Pasaje Isla Hermite 8740, Pudahuel.
+                    </div>
+                    <div class="pt-2">
+                        <a href="https://maps.google.com/?q=Pasaje+Isla+Hermite+8740+Pudahuel" target="_blank" class="inline-flex items-center gap-2 bg-volutiva-charcoal text-white px-7 py-3.5 rounded-xl text-xs font-black uppercase tracking-wider hover:bg-volutiva-accent transition-colors shadow-md">
+                            <i class="fas fa-directions"></i> Ver en Google Maps
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 bg-white p-3 rounded-3xl border border-volutiva-sand shadow-lg overflow-hidden">
+                    <div class="h-80 w-full rounded-2xl overflow-hidden shadow-inner">
+                        <iframe width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" src="https://maps.google.com/maps?q=Pasaje+Isla+Hermite+8740,+Pudahuel,+Santiago,+Chile&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 space-y-3">
+                <span class="text-xs uppercase tracking-widest text-volutiva-accent font-black">Despeja tus dudas</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-volutiva-charcoal uppercase">Preguntas Frecuentes</h2>
+            </div>
+            <div class="space-y-4">
+                <details class="group bg-volutiva-cream/40 border border-volutiva-sand rounded-2xl overflow-hidden shadow-sm">
+                    <summary class="flex justify-between items-center cursor-pointer p-6 font-black text-volutiva-charcoal text-lg">
+                        ¿Existe un volumen mínimo para pedir a empresas?
+                        <span class="transition duration-300 group-open:rotate-180 text-volutiva-accent text-xl"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-600 font-medium leading-relaxed border-t border-volutiva-sand/50 mt-2">
+                        Sí, para proyectos corporativos y transformación de tus propias lonas publicitarias trabajamos con un mínimo de producción que varía según el tipo de producto. Generalmente partimos desde las 30-50 unidades. Contáctanos para evaluar tu caso específico.
+                    </div>
+                </details>
+                <details class="group bg-volutiva-cream/40 border border-volutiva-sand rounded-2xl overflow-hidden shadow-sm">
+                    <summary class="flex justify-between items-center cursor-pointer p-6 font-black text-volutiva-charcoal text-lg">
+                        ¿Ustedes se encargan de limpiar las lonas o debo entregarlas limpias?
+                        <span class="transition duration-300 group-open:rotate-180 text-volutiva-accent text-xl"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-600 font-medium leading-relaxed border-t border-volutiva-sand/50 mt-2">
+                        Nosotros nos encargamos del proceso completo. Una vez retiramos o recibimos tu material publicitario, nuestro equipo realiza un exhaustivo proceso de higienización y preparación industrial.
+                    </div>
+                </details>
+                <details class="group bg-volutiva-cream/40 border border-volutiva-sand rounded-2xl overflow-hidden shadow-sm">
+                    <summary class="flex justify-between items-center cursor-pointer p-6 font-black text-volutiva-charcoal text-lg">
+                        ¿Entregan certificados de impacto o sustentabilidad?
+                        <span class="transition duration-300 group-open:rotate-180 text-volutiva-accent text-xl"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-600 font-medium leading-relaxed border-t border-volutiva-sand/50 mt-2">
+                        Al finalizar tu proyecto, entregamos un reporte detallado con la cantidad de metros cuadrados de PVC o textil que lograste desviar de los vertederos, ideal para los reportes ESG y de RSE de tu empresa.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. SECCIÓN CONTACTO Y FORMULARIO -->
+    <section id="contacto" class="py-24 bg-volutiva-charcoal text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-14">
+                <span class="text-xs uppercase tracking-[0.2em] text-volutiva-accent font-black">Hablemos B2B</span>
+                <h2 class="text-3xl sm:text-5xl font-black uppercase leading-tight">¿Tienes un material que merece una segunda vuelta?</h2>
+                <p class="text-gray-300 text-lg font-medium">Contáctate con nosotros por WhatsApp o usa nuestro formulario directo.</p>
+                
+                <div class="pt-4">
+                    <a href="https://wa.me/56975824178?text=Hola%2C%20tengo%20un%20proyecto%20o%20material%20publicitario%20en%20desuso%20para%20transformar%20con%20Volutiva." target="_blank" class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-black px-10 py-5 rounded-xl shadow-2xl transition-all transform hover:-translate-y-1 text-base uppercase tracking-wider">
+                        <i class="fab fa-whatsapp text-2xl"></i> Hablar con Asesor por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white text-volutiva-charcoal p-8 sm:p-12 rounded-[2.5rem] shadow-2xl">
+                <div class="mb-8 pb-6 border-b border-gray-100 text-center">
+                    <h3 class="text-xl font-black">O envíanos un mensaje directo a nuestro correo</h3>
+                    <p class="text-sm text-gray-500 mt-2 font-medium">El formulario enviará tu mensaje a <span class="font-bold text-volutiva-darkteal">volutivachile@gmail.com</span></p>
+                </div>
+
+                <form id="contacto-form" onsubmit="handleEmailFormSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-black text-gray-800 uppercase mb-2 tracking-wider">Nombre *</label>
+                            <input type="text" id="form-nombre" required class="w-full px-4 py-4 rounded-xl border-2 border-gray-100 focus:outline-none focus:border-volutiva-accent bg-gray-50 text-sm font-medium transition-colors" placeholder="Tu nombre">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black text-gray-800 uppercase mb-2 tracking-wider">Empresa / Institución</label>
+                            <input type="text" id="form-empresa" class="w-full px-4 py-4 rounded-xl border-2 border-gray-100 focus:outline-none focus:border-volutiva-accent bg-gray-50 text-sm font-medium transition-colors" placeholder="Nombre de tu empresa">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black text-gray-800 uppercase mb-2 tracking-wider">Email *</label>
+                        <input type="email" id="form-email" required class="w-full px-4 py-4 rounded-xl border-2 border-gray-100 focus:outline-none focus:border-volutiva-accent bg-gray-50 text-sm font-medium transition-colors" placeholder="correo@empresa.cl">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black text-gray-800 uppercase mb-2 tracking-wider">Mensaje o detalles</label>
+                        <textarea id="form-mensaje" rows="4" class="w-full px-4 py-4 rounded-xl border-2 border-gray-100 focus:outline-none focus:border-volutiva-accent bg-gray-50 text-sm font-medium transition-colors" placeholder="Cuéntanos sobre tu proyecto o material..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-volutiva-charcoal text-white font-black py-5 rounded-xl hover:bg-volutiva-accent transition-colors shadow-lg uppercase tracking-widest text-sm flex items-center justify-center gap-3">
+                        <i class="fas fa-paper-plane text-lg"></i> Enviar correo directamente
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. FOOTER -->
+    <footer class="bg-[#111111] text-white pt-16 pb-8 border-t-8 border-t-volutiva-accent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center space-y-6">
+            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-volutiva-accent flex items-center justify-center bg-white mb-2">
+                <img src="C:\Users\yoyit\Downloads\Logo_Volutiva.jpg" alt="Logo Volutiva" class="w-full h-full object-cover">
+            </div>
+            <h2 class="text-2xl font-black tracking-tighter">Volutiva Chile</h2>
+            <div class="flex gap-4 mb-4">
+                <a href="https://www.instagram.com/volutiva.chile" target="_blank" aria-label="Instagram" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-xl hover:bg-volutiva-accent transition-colors">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <p class="text-sm text-gray-400 font-medium">Pasaje Isla Hermite 8740, Pudahuel, Santiago &middot; volutivachile@gmail.com</p>
+            <p class="text-xs text-gray-600 font-bold tracking-widest uppercase mt-4">&copy; 2026 Volutiva Chile. Economía Circular de Alto Nivel.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL DE PRODUCTO -->
+    <div id="product-modal" class="fixed inset-0 z-[100] hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-[2rem] max-w-lg w-full p-8 relative shadow-2xl animate-fade-in max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" aria-label="Cerrar modal" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-volutiva-charcoal hover:text-white transition-colors z-10 text-xl font-bold">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 id="modal-title" class="text-2xl font-black text-volutiva-charcoal mb-4 pr-10">Título</h3>
+            
+            <div class="mb-5 rounded-2xl overflow-hidden shadow-inner bg-gray-100 h-64 border border-gray-200">
+                <img id="modal-main-img" src="" alt="Vista previa" class="w-full h-full object-cover transition-all duration-300">
+            </div>
+            <div id="modal-thumbnails" class="flex gap-3 mb-6 overflow-x-auto pb-2 no-scrollbar"></div>
+            <p id="modal-desc" class="text-gray-600 leading-relaxed mb-8 text-sm font-medium">Descripción</p>
+            
+            <div class="flex flex-col gap-3">
+                <a href="#contacto" onclick="closeModal()" class="w-full bg-volutiva-accent text-white text-center font-black py-4 rounded-xl hover:bg-volutiva-charcoal transition-colors uppercase tracking-wider text-sm shadow-lg">
+                    Cotizar este producto
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 16. CHATBOT CONCIERGE INTELIGENTE -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="chat-toggle-btn" aria-label="Abrir chat de asistencia" onclick="toggleChat()" class="w-16 h-16 bg-volutiva-charcoal hover:bg-volutiva-accent text-white rounded-full shadow-2xl flex items-center justify-center text-3xl transition-transform hover:scale-110 focus:outline-none relative border-4 border-white">
+            <i class="fas fa-comments" id="chat-icon"></i>
+            <span class="absolute top-0 right-0 w-4 h-4 bg-green-400 border-2 border-white rounded-full animate-pulse"></span>
+        </button>
+
+        <div id="chat-window" class="hidden fixed sm:absolute inset-x-4 sm:inset-auto bottom-24 sm:bottom-20 sm:right-0 w-auto sm:w-[400px] bg-white rounded-[2rem] shadow-2xl border border-gray-200 overflow-hidden flex flex-col transition-all max-h-[75vh] sm:max-h-[600px] z-50">
+            <div class="bg-volutiva-charcoal text-white p-5 flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full overflow-hidden shadow-md border-2 border-volutiva-accent flex items-center justify-center bg-white">
+                        <img src="C:\Users\yoyit\Downloads\Logo_Volutiva.jpg" alt="Logo Volutiva" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="font-black text-sm">Asistente Volutiva</h4>
+                        <span class="block text-[10px] text-gray-300 flex items-center gap-1 font-bold tracking-widest uppercase"><span class="w-2 h-2 rounded-full bg-green-400 inline-block animate-pulse"></span> Concierge B2B</span>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" aria-label="Cerrar chat" class="text-gray-400 hover:text-white text-xl p-1">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div id="chat-messages" class="p-5 h-64 sm:h-72 overflow-y-auto space-y-4 bg-gray-50 text-sm shrink-0 sm:shrink">
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-200 max-w-[90%] leading-relaxed space-y-2 rounded-tl-none">
+                    <p>¡Hola! 🌿 Bienvenido(a) a <strong>Volutiva Chile</strong>.</p>
+                    <p>Hemos transformado campañas para marcas como LATAM Airlines. ¿En qué te podemos ayudar hoy con tus residuos corporativos?</p>
+                </div>
+            </div>
+
+            <div class="px-4 py-3 bg-white border-t border-gray-100 flex flex-nowrap overflow-x-auto gap-2 text-xs shrink-0 whitespace-nowrap no-scrollbar shadow-inner">
+                <button onclick="sendQuickReply('Cotizar para empresas B2B')" class="bg-volutiva-charcoal hover:bg-volutiva-accent text-white px-4 py-2 rounded-full font-bold transition-colors shrink-0">🏢 Cotizar</button>
+                <button onclick="sendQuickReply('¿Qué hace Volutiva?')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold transition-colors shrink-0">🌿 ¿Qué es?</button>
+                <button onclick="sendQuickReply('Ver grandes logros y casos de éxito')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold transition-colors shrink-0">⭐ Caso LATAM</button>
+                <button onclick="sendQuickReply('Ver productos y catálogo')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold transition-colors shrink-0">🎒 Catálogo</button>
+                <button onclick="sendQuickReply('Proceso de reciclaje y lonas')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-full font-bold transition-colors shrink-0">♻️ Proceso</button>
+                <button onclick="sendQuickReply('calcular impacto')" class="bg-volutiva-accent/10 hover:bg-volutiva-accent hover:text-white text-volutiva-accent px-4 py-2 rounded-full font-black transition-colors shrink-0 border border-volutiva-accent/30">📊 Calculadora</button>
+            </div>
+
+            <div class="p-4 bg-white border-t border-gray-100 flex gap-3 shrink-0">
+                <input type="text" id="chat-input" placeholder="Escribe tu consulta..." class="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-volutiva-accent focus:ring-1 focus:ring-volutiva-accent text-sm font-medium bg-gray-50" onkeypress="handleChatKey(event)">
+                <button onclick="sendUserMessage()" aria-label="Enviar mensaje al chat" class="bg-volutiva-accent hover:bg-volutiva-charcoal text-white px-4 py-3 rounded-xl text-sm font-black transition-colors shadow-md flex items-center justify-center">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 17. TOAST DE NOTIFICACIÓN EXITOSA -->
+    <div id="toast" class="fixed bottom-6 left-6 z-[100] hidden bg-volutiva-charcoal text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-4 border-l-4 border-volutiva-accent">
+        <i class="fas fa-check-circle text-volutiva-accent text-2xl"></i>
+        <div>
+            <h4 class="font-black text-sm">¡Correo preparado!</h4>
+            <p class="text-xs text-gray-400 font-medium">Abriendo tu cliente de correo...</p>
+        </div>
+    </div>
+
+    <!-- 18. SCRIPTS DE JAVASCRIPT -->
+    <script>
+        // Control del menú móvil
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // FUNCIONALIDAD DEL CATÁLOGO DE PRODUCTOS (Filtros)
+        function filterCatalog(category, buttonElement) {
+            const buttons = document.querySelectorAll('.catalog-filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-volutiva-charcoal', 'text-white', 'shadow-md');
+                btn.classList.add('bg-gray-100', 'text-gray-600', 'hover:bg-gray-200');
+            });
+            buttonElement.classList.remove('bg-gray-100', 'text-gray-600', 'hover:bg-gray-200');
+            buttonElement.classList.add('bg-volutiva-charcoal', 'text-white', 'shadow-md');
+
+            const items = document.querySelectorAll('.catalog-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'flex';
+                    setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.95)';
+                    setTimeout(() => { item.style.display = 'none'; }, 300);
+                }
+            });
+        }
+
+        // Funciones del Modal de Productos
+        function openModal(title, desc, images) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+            
+            const mainImg = document.getElementById('modal-main-img');
+            const thumbnailsContainer = document.getElementById('modal-thumbnails');
+            thumbnailsContainer.innerHTML = '';
+
+            if (images && images.length > 0) {
+                mainImg.src = images[0];
+                images.forEach((imgUrl, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = imgUrl;
+                    thumb.alt = title + ' miniatura ' + (index + 1);
+                    thumb.className = `w-20 h-20 rounded-xl object-cover cursor-pointer border-2 transition-all shrink-0 ${index === 0 ? 'border-volutiva-accent scale-105 shadow-md' : 'border-transparent opacity-60 hover:opacity-100'}`;
+                    
+                    thumb.addEventListener('click', () => {
+                        mainImg.src = imgUrl;
+                        document.querySelectorAll('#modal-thumbnails img').forEach(t => {
+                            t.classList.remove('border-volutiva-accent', 'scale-105', 'shadow-md');
+                            t.classList.add('border-transparent', 'opacity-60');
+                        });
+                        thumb.classList.remove('border-transparent', 'opacity-60');
+                        thumb.classList.add('border-volutiva-accent', 'scale-105', 'shadow-md');
+                    });
+                    thumbnailsContainer.appendChild(thumb);
+                });
+            }
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        // Lógica Avanzada del Chatbot Concierge Enriquecido
+        function toggleChat() {
+            const chatWindow = document.getElementById('chat-window');
+            chatWindow.classList.toggle('hidden');
+        }
+
+        function appendMessage(sender, text) {
+            const messagesContainer = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            
+            if (sender === 'user') {
+                messageDiv.className = 'flex justify-end';
+                messageDiv.innerHTML = `<div class="bg-volutiva-charcoal text-white p-4 rounded-2xl rounded-tr-none max-w-[85%] text-sm shadow-sm">${text}</div>`;
+            } else {
+                messageDiv.className = 'flex justify-start';
+                messageDiv.innerHTML = `<div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-gray-200 max-w-[90%] text-sm leading-relaxed space-y-2">${text}</div>`;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function sendQuickReply(text) {
+            appendMessage('user', text);
+            processBotResponse(text);
+        }
+
+        function sendUserMessage() {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (text === '') return;
+            
+            appendMessage('user', text);
+            input.value = '';
+            processBotResponse(text);
+        }
+
+        function handleChatKey(e) {
+            if (e.key === 'Enter') {
+                sendUserMessage();
+            }
+        }
+
+        const detailedKnowledgeBase = [
+            {
+                keywords: ['calcular', 'impacto', 'calculadora', 'simular', 'cotización exprés'],
+                response: `📊 <strong>Calculadora Exprés de Impacto Volutiva:</strong><br>
+                ¿Tienes material publicitario acumulado?<br>
+                • <strong>10 m² de Lona</strong> = Aprox. 8 a 10 Porta Notebooks o Bolsos.<br>
+                • <strong>Beneficio ESG:</strong> 100% libre de vertedero + trazabilidad fotográfica.<br>
+                <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">¡Cotiza tu proyecto a medida ahora →</a>`
+            },
+            {
+                keywords: ['logro', 'latam', 'caso', 'exito', 'éxito', 'marcas', 'confianza', 'clientes', 'global vía pública', 'aliados', 'empresas aliadas'],
+                response: `⭐ <strong>Empresas y Aliados Estratégicos:</strong><br>
+                Volutiva cuenta con el respaldo y confianza de importantes organizaciones:<br>
+                • <strong>LATAM Airlines:</strong> Partner en nuestro caso de éxito principal (+150 porta notebooks elaborados).<br>
+                • <strong>Global Vía Pública:</strong> Socio logístico en recuperación de lonas.<br>
+                • <strong>Fundación Gestionar Esperanzas:</strong> Aliado en el componente social.<br>
+                • <strong>Universidad Autónoma de Chile:</strong> Vinculación académica e innovación.<br>
+                <a href="#aliados" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">Ver escaparate de marcas y aliados →</a>`
+            },
+            {
+                keywords: ['qué es', 'que es', 'volutiva', 'quiénes son', 'quienes son', 'emprendimiento', 'historia'],
+                response: `🌿 <strong>¿Qué es Volutiva Chile?</strong><br>
+                Somos un emprendimiento chileno liderado por mujeres (Giselle Becerra y Alida Guillén) que opera desde Pudahuel. Convertimos material publicitario en desuso en activos corporativos de alta calidad.<br>
+                <span class="text-[11px] text-gray-500 block mt-1 font-bold">💡 Con el respaldo de LATAM y U. Autónoma.</span>`
+            },
+            {
+                keywords: ['producto', 'catalogo', 'catálogo', 'mochila', 'bolso', 'cartera', 'notebook', 'funda', 'accesorios'],
+                response: `🎒 <strong>Nuestro Catálogo Sustentable:</strong><br>
+                • <strong>Mochilas:</strong> Resistentes, urbanas y ergonómicas.<br>
+                • <strong>Bolsos:</strong> Gran capacidad, impermeables y lavables.<br>
+                • <strong>Carteras:</strong> Diseños únicos según la gráfica de origen.<br>
+                • <strong>Porta Notebooks:</strong> Acolchados y seguros para ejecutivos.<br>
+                <a href="#catalogo" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-1">Ver galería de productos →</a>`
+            },
+            {
+                keywords: ['cotizar', 'empresa', 'corporativo', 'precio', 'minimo', 'b2b', 'rse', 'esg', 'marketing', 'regalo'],
+                response: `🏢 <strong>Soluciones Corporativas B2B:</strong><br>
+                Convertimos los residuos de tu marca en activos con propósito (Regalos corporativos y merchandising ESG).<br>
+                <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-1">Ir al formulario de contacto →</a>`
+            },
+            {
+                keywords: ['proceso', 'como funciona', 'cmo funciona', 'reciclaje', 'lona', 'recuperar', 'residuo', 'campaña', 'etapas'],
+                response: `♻️ <strong>Proceso Circular Trazable:</strong><br>
+                1️⃣ <strong>Origen:</strong> Retiramos lonas en desuso.<br>
+                2️⃣ <strong>Limpieza:</strong> Higienización industrial.<br>
+                3️⃣ <strong>Diseño:</strong> Cortes a medida.<br>
+                4️⃣ <strong>Confección:</strong> Costura experta local.<br>
+                5️⃣ <strong>Resultado:</strong> Producto corporativo terminado.<br>
+                <a href="#proceso" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-1">Ver esquema completo →</a>`
+            },
+            {
+                keywords: ['ubicacion', 'ubicación', 'direccion', 'dirección', 'donde', 'dónde', 'pudahuel', 'santiago', 'mapa', 'llegar'],
+                response: `📍 <strong>Nuestra Casa Matriz:</strong><br>
+                Operamos desde <strong>Pasaje Isla Hermite 8740, Pudahuel, Santiago, Chile</strong>.<br>
+                <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-1">Ver ubicación en Google Maps →</a>`
+            }
+        ];
+
+        function findBestDetailedResponse(userText) {
+            const lower = userText.toLowerCase();
+            for (let item of detailedKnowledgeBase) {
+                for (let kw of item.keywords) {
+                    if (lower.includes(kw)) {
+                        return item.response;
+                    }
+                }
+            }
+            return `¡Gracias por tu mensaje! 🌿 Para brindarte una respuesta personalizada o asesorarte, te invitamos a dejarnos un correo a través de nuestro <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline">formulario de contacto</a>.`;
+        }
+
+        function processBotResponse(userText) {
+            const messagesContainer = document.getElementById('chat-messages');
+            
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'flex justify-start';
+            typingDiv.id = 'bot-typing-indicator';
+            typingDiv.innerHTML = `<div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-gray-200 text-gray-400 italic text-xs flex items-center gap-2"><span class="w-1.5 h-1.5 bg-volutiva-accent rounded-full animate-bounce"></span><span class="w-1.5 h-1.5 bg-volutiva-accent rounded-full animate-bounce [animation-delay:0.2s]"></span><span class="w-1.5 h-1.5 bg-volutiva-accent rounded-full animate-bounce [animation-delay:0.4s]"></span></div>`;
+            messagesContainer.appendChild(typingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            setTimeout(() => {
+                const indicator = document.getElementById('bot-typing-indicator');
+                if (indicator) indicator.remove();
+
+                const reply = findBestDetailedResponse(userText);
+                appendMessage('bot', reply);
+            }, 1000);
+        }
+
+        // Manejador del formulario
+        function handleEmailFormSubmit(event) {
+            event.preventDefault();
+            
+            const nombre = document.getElementById('form-nombre').value;
+            const empresa = document.getElementById('form-empresa').value || 'No especificada';
+            const email = document.getElementById('form-email').value;
+            const mensaje = document.getElementById('form-mensaje').value || 'Sin mensaje adicional';
+
+            const asunto = encodeURIComponent('Nueva consulta B2B desde web - Volutiva Chile');
+            const cuerpo = encodeURIComponent(`Hola Volutiva Chile,\n\nHe enviado el siguiente mensaje desde el formulario de la página web:\n\n- Nombre: ${nombre}\n- Empresa: ${empresa}\n- Correo de contacto: ${email}\n- Mensaje: ${mensaje}`);
+
+            const mailtoUrl = `mailto:volutivachile@gmail.com?subject=${asunto}&body=${cuerpo}`;
+
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                window.location.href = mailtoUrl;
+            }, 1500);
+
+            document.getElementById('contacto-form').reset();
+        }
+
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('product-modal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
