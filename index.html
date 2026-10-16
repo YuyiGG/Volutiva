@@ -1132,6 +1132,7 @@
                 <a href="#catalogo" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-1">Ver galería de productos →</a>`
             },
             {
+                priority: 1,
                 keywords: ['cotizar', 'cotizacion', 'precio', 'valor', 'presupuesto', 'pedido', 'comprar', 'empresa', 'corporativo', 'b2b', 'regalo corporativo', 'cuanto cuesta'],
                 response: `🏢 <strong>Cotizaciones para empresas:</strong><br>
                 Para orientarte, cuéntanos qué material quieres recuperar, una cantidad o superficie aproximada, qué productos te interesan y para cuándo los necesitas. El valor y las cantidades se revisan según cada proyecto.<br>
@@ -1196,7 +1197,7 @@
                     const normalizedKeyword = normalizeChatText(keyword);
                     if (normalizedText.includes(` ${normalizedKeyword} `)) {
                         const wordCount = normalizedKeyword.split(' ').length;
-                        const score = wordCount * 100 + normalizedKeyword.length;
+                        const score = (item.priority || 0) * 100 + wordCount * 100 + normalizedKeyword.length;
                         if (score > bestScore) {
                             bestMatch = item;
                             bestScore = score;
