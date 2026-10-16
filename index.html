@@ -1155,10 +1155,15 @@
                 <a href="https://maps.google.com/?q=Pasaje+Isla+Hermite+8740,+Pudahuel,+Santiago,+Chile" target="_blank" rel="noopener noreferrer" class="text-volutiva-accent font-bold underline block mt-1">Ver mapa de referencia →</a>`
             },
             {
-                keywords: ['calcular impacto', 'calcular mi impacto', 'calculadora', 'simular impacto', 'estimacion de impacto'],
-                response: `📊 <strong>Estimación de impacto</strong><br>
-                No calculamos una cifra fiable sin revisar cada proyecto. Para preparar una estimación, necesitamos conocer el tipo y la cantidad de material disponible, su estado y los productos que te interesan.<br>
-                <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">Compartir los datos de tu proyecto →</a>`
+                keywords: ['calcular impacto', 'calcular mi impacto', 'calculadora', 'simular impacto', 'estimacion de impacto', 'cuantos metros cuadrados', 'superficie a recuperar'],
+                response: `📊 <strong>Estimación de material para recuperar</strong><br>
+                ¿Cuántos metros cuadrados de lona o textil publicitario quieres recuperar?<br>
+                <label for="impact-area-input" class="block text-xs font-bold text-gray-600 mt-3 mb-1">Superficie estimada (m²)</label>
+                <div class="flex gap-2">
+                    <input id="impact-area-input" type="text" inputmode="decimal" autocomplete="off" aria-label="Superficie estimada en metros cuadrados" placeholder="Ej.: 25,5" class="min-w-0 flex-1 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-volutiva-accent text-sm">
+                    <button type="button" onclick="calculateMaterialImpact(this)" class="bg-volutiva-accent hover:bg-volutiva-charcoal text-white px-3 py-2 rounded-lg text-xs font-black">Calcular</button>
+                </div>
+                <p class="text-xs text-gray-500 mt-2">La cifra indica la superficie objetivo declarada. La recuperación efectiva se confirma al revisar el tipo y estado del material.</p>`
             },
             {
                 keywords: ['impacto', 'impacto ambiental', 'impacto social', 'sostenibilidad', 'esg', 'rse', 'huella'],
@@ -1187,6 +1192,39 @@
                 .replace(/\s+/g, ' ');
         }
 
+        function formatMaterialArea(area) {
+            return new Intl.NumberFormat('es-CL', { maximumFractionDigits: 2 }).format(area);
+        }
+
+        function showMaterialImpact(area) {
+            const formattedArea = formatMaterialArea(area);
+            appendMessage('bot', `🌱 <strong>Objetivo de recuperación: ${formattedArea} m²</strong><br>
+                Esa es la superficie de material que indicas para evaluar. La cantidad aprovechable se confirma al revisar su tipo y estado; esta cifra no representa productos fabricados ni emisiones evitadas.<br>
+                <a href="#contacto" onclick="toggleChat()" class="text-volutiva-accent font-bold underline block mt-2">Compartir los datos de tu proyecto →</a>
+                <a href="https://wa.me/56975824178?text=Hola%2C%20quiero%20evaluar%20la%20recuperacion%20de%20${encodeURIComponent(formattedArea)}%20m2%20de%20material." target="_blank" rel="noopener noreferrer" class="text-volutiva-accent font-bold underline block mt-1">Consultar por WhatsApp →</a>`);
+        }
+
+        function calculateMaterialImpact(button) {
+            const input = button.previousElementSibling;
+            const area = Number(input.value.trim().replace(',', '.'));
+
+            if (!Number.isFinite(area) || area <= 0) {
+                appendMessage('bot', 'Ingresa una superficie mayor que 0 m². Puedes usar coma o punto para los decimales.');
+                input.focus();
+                return;
+            }
+
+            showMaterialImpact(area);
+        }
+
+        function extractMaterialArea(text) {
+            const match = text.match(/(\d+(?:[.,]\d+)?)\s*(?:m2|m²|metros?\s+cuadrados?)/i);
+            if (!match) return null;
+
+            const area = Number(match[1].replace(',', '.'));
+            return Number.isFinite(area) && area > 0 ? area : null;
+        }
+
         function findBestDetailedResponse(userText) {
             const normalizedText = ` ${normalizeChatText(userText)} `;
             let bestMatch = null;
@@ -1212,6 +1250,12 @@
         }
 
         function processBotResponse(userText) {
+            const area = extractMaterialArea(userText);
+            if (area !== null) {
+                showMaterialImpact(area);
+                return;
+            }
+
             appendMessage('bot', findBestDetailedResponse(userText));
         }
 
