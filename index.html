@@ -361,14 +361,6 @@
                 <p class="text-gray-600 text-base sm:text-lg font-medium">Explora lo que hemos creado. Diseños duraderos e impermeables elaborados a partir de campañas recuperadas reales.</p>
             </div>
 
-            <!-- Filtros del Catálogo -->
-            <div class="flex flex-wrap justify-center gap-3 mb-12">
-                <button onclick="filterCatalog('all', this)" class="catalog-filter-btn px-6 py-2.5 rounded-full text-sm font-black transition-all bg-volutiva-navy text-white shadow-md">Todos</button>
-                <button onclick="filterCatalog('oficina', this)" class="catalog-filter-btn px-6 py-2.5 rounded-full text-sm font-black transition-all bg-gray-100 text-gray-600 hover:bg-gray-200">Oficina & Tech</button>
-                <button onclick="filterCatalog('bolsos', this)" class="catalog-filter-btn px-6 py-2.5 rounded-full text-sm font-black transition-all bg-gray-100 text-gray-600 hover:bg-gray-200">Bolsos & Mochilas</button>
-                <button onclick="filterCatalog('accesorios', this)" class="catalog-filter-btn px-6 py-2.5 rounded-full text-sm font-black transition-all bg-gray-100 text-gray-600 hover:bg-gray-200">Accesorios</button>
-            </div>
-
             <!-- Grilla de Catálogo -->
             <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
@@ -1006,29 +998,6 @@
             });
         });
 
-        // FUNCIONALIDAD DEL CATÁLOGO DE PRODUCTOS (Filtros)
-        function filterCatalog(category, buttonElement) {
-            const buttons = document.querySelectorAll('.catalog-filter-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-volutiva-navy', 'text-white', 'shadow-md');
-                btn.classList.add('bg-gray-100', 'text-gray-600', 'hover:bg-gray-200');
-            });
-            buttonElement.classList.remove('bg-gray-100', 'text-gray-600', 'hover:bg-gray-200');
-            buttonElement.classList.add('bg-volutiva-navy', 'text-white', 'shadow-md');
-
-            const items = document.querySelectorAll('.catalog-item');
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'flex';
-                    setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.95)';
-                    setTimeout(() => { item.style.display = 'none'; }, 300);
-                }
-            });
-        }
-
         // Funciones del Modal de Productos
         function openModal(title, desc, images) {
             document.getElementById('modal-title').innerText = title;
@@ -1061,16 +1030,64 @@
             document.getElementById('product-modal').classList.remove('hidden');
         }
 
-        function openCatalogCollection() {
-            const images = Array.from({ length: 23 }, (_, index) =>
-                `Productos/catalogo/modelo-${String(index + 1).padStart(2, '0')}.jpg`
-            );
-            openModal(
-                'Colección real de bolsos y estuches',
-                'Explora 23 diseños confeccionados con lonas recuperadas. Cada pieza puede variar según el material disponible.',
-                images
-            );
+        function renderCatalogProducts() {
+            const grid = document.getElementById('catalog-grid');
+            const products = [
+                { name: 'Estuches rojos', models: [1, 2, 3] },
+                { name: 'Estuches amarillos', models: [4, 11, 13] },
+                { name: 'Estuches neutros', models: [5, 12, 18] },
+                { name: 'Bolsos tote', models: [9, 10, 23] },
+                { name: 'Set de bolsos y estuches', models: [8, 17] },
+                { name: 'Modelos estampados', models: [6, 7, 14, 15, 16, 19] },
+                { name: 'Bolsos rojos', models: [20, 21, 22] }
+            ].map(product => ({
+                ...product,
+                images: product.models.map(model =>
+                    `Productos/catalogo/modelo-${String(model).padStart(2, '0')}.jpg`
+                )
+            }));
+
+            grid.replaceChildren();
+            products.forEach(product => {
+                const card = document.createElement('article');
+                card.className = 'catalog-item bg-volutiva-sand/30 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-volutiva-sand flex flex-col group cursor-pointer';
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+                card.innerHTML = `
+                    <div class="relative overflow-hidden h-64 bg-gray-100">
+                        <img src="${product.images[0]}" alt="${product.name}, confeccionado con lona recuperada" loading="lazy" decoding="async" class="h-full w-full object-contain p-3 group-hover:scale-105 transition-transform duration-500">
+                        <div aria-hidden="true" class="absolute bottom-3 right-3 z-20 w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg pointer-events-none bg-white p-1">
+                            <img src="Logo_Social_Bia.png" alt="Social Bio" class="h-full w-full object-contain">
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between bg-white">
+                        <div>
+                            <h3 class="text-xl font-black text-volutiva-navy mb-1">${product.name}</h3>
+                            <p class="text-xs text-gray-500 font-bold mb-3">${product.models.length} ${product.models.length === 1 ? 'vista' : 'vistas'} del modelo</p>
+                        </div>
+                        <span class="text-volutiva-teal font-black text-sm inline-flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                            Ver detalles <i class="fas fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                `;
+
+                const showProductDetails = () => openModal(
+                    product.name,
+                    'Explora las distintas vistas de este diseño. Consulta dimensiones, personalización y disponibilidad.',
+                    product.images
+                );
+                card.addEventListener('click', showProductDetails);
+                card.addEventListener('keydown', event => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        showProductDetails();
+                    }
+                });
+                grid.appendChild(card);
+            });
         }
+
+        renderCatalogProducts();
 
         function closeModal() {
             document.getElementById('product-modal').classList.add('hidden');
