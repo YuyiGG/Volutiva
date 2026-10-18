@@ -98,7 +98,7 @@
                 <!-- Logo Oficial Volutiva -->
                 <a href="#inicio" class="flex items-center gap-3 group">
                     <div class="h-12 overflow-hidden flex items-center justify-center bg-white">
-                        <img src="STAMP TURQUESA.jpg" alt="Sello Volutiva turquesa" class="h-full w-auto object-contain">
+                        <img src="STAMP TURQUESA.png" alt="Sello Volutiva turquesa" class="h-full w-auto object-contain">
                     </div>
                 </a>
 
@@ -204,7 +204,7 @@
                     <div class="relative mx-auto max-w-md lg:max-w-none animate-float z-10">
                         <div class="absolute inset-0 bg-volutiva-teal rounded-[2rem] transform translate-x-4 translate-y-4"></div>
                         <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800" alt="Productos corporativos de economía circular" class="relative rounded-[2rem] shadow-2xl object-cover w-full h-[400px] lg:h-[520px] border-4 border-volutiva-navy">
-                        <img src="STAMP TURQUESA.jpg" alt="Sello turquesa de Volutiva" class="absolute top-5 right-5 w-20 h-20 rounded-full border-2 border-white bg-white p-1.5 shadow-xl">
+                        <img src="STAMP TURQUESA.png" alt="Sello turquesa de Volutiva" class="absolute top-5 right-5 w-20 h-20 rounded-full border-2 border-white bg-white p-1.5 shadow-xl">
                         
                         <div class="absolute -bottom-8 -left-4 sm:-left-10 bg-volutiva-navy p-5 rounded-2xl shadow-2xl border border-gray-700 flex items-center gap-4">
                             <div class="w-12 h-12 bg-volutiva-teal text-white rounded-full flex items-center justify-center text-xl shadow-inner">
@@ -371,6 +371,26 @@
 
             <!-- Grilla de Catálogo -->
             <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Colección de productos reales -->
+                <div class="catalog-item bg-volutiva-sand/30 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-volutiva-sand flex flex-col group cursor-pointer" data-category="bolsos" onclick="openCatalogCollection()">
+                    <div class="relative overflow-hidden h-64 bg-gray-100">
+                        <div class="absolute top-4 left-4 z-10 bg-volutiva-navy text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md">Modelos reales</div>
+                        <img src="Productos/catalogo/modelo-17.jpg" alt="Colección real de estuches y bolsos de lona recuperada" loading="lazy" decoding="async" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div aria-hidden="true" class="absolute bottom-3 right-3 z-20 w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg pointer-events-none bg-white p-1">
+                            <img src="Logo_Social_Bia.png" alt="Social Bio" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between bg-white">
+                        <div>
+                            <h3 class="text-xl font-black text-volutiva-navy mb-1">Colección real de bolsos y estuches</h3>
+                            <p class="text-xs text-gray-500 font-bold mb-3">Modelos confeccionados con lonas recuperadas</p>
+                        </div>
+                        <span class="text-volutiva-teal font-black text-sm inline-flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                            Ver los 23 diseños <i class="fas fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                </div>
                 
                 <!-- Producto 1 -->
                 <div class="catalog-item bg-volutiva-sand/30 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-volutiva-sand flex flex-col group cursor-pointer" data-category="oficina" onclick="openModal('Porta Notebook Corporativo', 'Fundas protectoras acolchadas e impermeables para computadores. Ideales para equipos comerciales y ejecutivos.', ['https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600'])">
@@ -378,7 +398,7 @@
                         <div class="absolute top-4 left-4 z-10 bg-volutiva-navy text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md">Edición LATAM</div>
                         <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600" alt="Porta notebooks" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div aria-hidden="true" class="absolute bottom-3 right-3 z-20 w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg pointer-events-none bg-white p-1">
-                            <img src="Logo_Social_Bia.jpg" alt="Social Bio" class="w-full h-full object-contain">
+                            <img src="Logo_Social_Bia.png" alt="Social Bio" class="w-full h-full object-contain">
                         </div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between bg-white">
@@ -398,7 +418,7 @@
                         <div class="absolute top-4 left-4 z-10 bg-volutiva-accent text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md">Top Ventas B2B</div>
                         <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=600" alt="Mochilas sustentables" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div aria-hidden="true" class="absolute bottom-3 right-3 z-20 w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg pointer-events-none bg-white p-1">
-                            <img src="Logo_Social_Bia.jpg" alt="Social Bio" class="w-full h-full object-contain">
+                            <img src="Logo_Social_Bia.png" alt="Social Bio" class="w-full h-full object-contain">
                         </div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between bg-white">
@@ -417,7 +437,7 @@
                     <div class="relative overflow-hidden h-64">
                         <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=600" alt="Bolsos corporativos" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div aria-hidden="true" class="absolute bottom-3 right-3 z-20 w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg pointer-events-none bg-white p-1">
-                            <img src="Logo_Social_Bia.jpg" alt="Social Bio" class="w-full h-full object-contain">
+                            <img src="Logo_Social_Bia.png" alt="Social Bio" class="w-full h-full object-contain">
                         </div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between bg-white">
@@ -437,7 +457,7 @@
                         <div class="absolute top-4 left-4 z-10 bg-volutiva-teal text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md">Ideal Activaciones</div>
                         <img src="https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?auto=format&fit=crop&q=80&w=600" alt="Carteras y accesorios" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div aria-hidden="true" class="absolute bottom-3 right-3 z-20 w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg pointer-events-none bg-white p-1">
-                            <img src="Logo_Social_Bia.jpg" alt="Social Bio" class="w-full h-full object-contain">
+                            <img src="Logo_Social_Bia.png" alt="Social Bio" class="w-full h-full object-contain">
                         </div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between bg-white">
@@ -456,7 +476,7 @@
                     <div class="relative overflow-hidden h-64">
                         <img src="https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&q=80&w=600" alt="Estuches corporativos" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div aria-hidden="true" class="absolute bottom-3 right-3 z-20 w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg pointer-events-none bg-white p-1">
-                            <img src="Logo_Social_Bia.jpg" alt="Social Bio" class="w-full h-full object-contain">
+                            <img src="Logo_Social_Bia.png" alt="Social Bio" class="w-full h-full object-contain">
                         </div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between bg-white">
@@ -476,7 +496,7 @@
                         <div class="absolute top-4 left-4 z-10 bg-volutiva-navy text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md">Merchandising</div>
                         <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=600" alt="Accesorios corporativos" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div aria-hidden="true" class="absolute bottom-3 right-3 z-20 w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg pointer-events-none bg-white p-1">
-                            <img src="Logo_Social_Bia.jpg" alt="Social Bio" class="w-full h-full object-contain">
+                            <img src="Logo_Social_Bia.png" alt="Social Bio" class="w-full h-full object-contain">
                         </div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between bg-white">
@@ -639,7 +659,7 @@
             <div class="bg-volutiva-navy text-white p-10 sm:p-12 rounded-[2.5rem] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 border-b-8 border-b-volutiva-teal">
                 <div class="flex items-center gap-6 text-center md:text-left flex-col md:flex-row">
                     <div class="h-16 overflow-hidden shrink-0 flex items-center justify-center bg-white p-2 rounded-2xl">
-                        <img src="STAMP TURQUESA.jpg" alt="Sello Volutiva" class="h-full w-auto object-contain">
+                        <img src="STAMP TURQUESA.png" alt="Sello Volutiva" class="h-full w-auto object-contain">
                     </div>
                     <div class="space-y-2">
                         <h4 class="text-2xl font-black text-white">¿Quieres sumarte al cambio?</h4>
@@ -924,7 +944,7 @@
             <div class="bg-volutiva-navy text-white p-5 flex items-center justify-between shrink-0">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full overflow-hidden shadow-md border-2 border-volutiva-teal flex items-center justify-center bg-white p-1">
-                        <img src="STAMP TURQUESA.jpg" alt="Logo Volutiva" class="w-full h-full object-contain">
+                        <img src="STAMP TURQUESA.png" alt="Logo Volutiva" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <h4 class="font-black text-sm">Asistente Volutiva</h4>
@@ -1039,6 +1059,17 @@
                 });
             }
             document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function openCatalogCollection() {
+            const images = Array.from({ length: 23 }, (_, index) =>
+                `Productos/catalogo/modelo-${String(index + 1).padStart(2, '0')}.jpg`
+            );
+            openModal(
+                'Colección real de bolsos y estuches',
+                'Explora 23 diseños confeccionados con lonas recuperadas. Cada pieza puede variar según el material disponible.',
+                images
+            );
         }
 
         function closeModal() {
